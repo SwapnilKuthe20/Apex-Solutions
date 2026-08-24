@@ -15,34 +15,33 @@ export function HeroEngineeringVisual() {
       id="hero-visual-container"
     >
       {/* 
-        EXACT 9-PART ASYMMETRIC SILHOUETTE DEFINITION:
-        1. Left vertical body
-        2. Lower-left rounded transition
-        3. Long bottom edge
-        4. Lower-right smooth diagonal/curved transition
-        5. Right vertical edge
-        6. Large upper-right rounding
-        7. Long top horizontal edge
-        8. Upper-left stepped/concave curve
-        9. Left-side return into main body
+        PRECISE VECTOR SILHOUETTE MATCHING ORIGINAL REFERENCE:
+        - 45-degree upper-left step
+        - 45-degree mid-left offset
+        - 45-degree lower-right diagonal contour
+        - Seamlessly rounded vertices
       */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>
           <clipPath id="heroShape" clipPathUnits="objectBoundingBox">
             <path d="
-              M 0.12, 0.32
-              L 0.12, 0.80
-              C 0.12, 0.90 0.18, 0.96 0.28, 0.96
-              L 0.62, 0.96
-              C 0.74, 0.96 0.86, 0.88 0.94, 0.76
-              L 0.98, 0.70
-              C 1.00, 0.66 1.00, 0.60 1.00, 0.50
-              L 1.00, 0.16
-              C 1.00, 0.06 0.94, 0.00 0.84, 0.00
-              L 0.52, 0.00
-              C 0.44, 0.00 0.38, 0.06 0.34, 0.12
-              L 0.30, 0.18
-              C 0.26, 0.24 0.20, 0.28 0.12, 0.32
+              M 0.14, 0.20
+              L 0.34, 0.20
+              C 0.38, 0.20 0.42, 0.17 0.45, 0.13
+              L 0.49, 0.05
+              C 0.52, 0.01 0.56, 0.00 0.61, 0.00
+              L 0.88, 0.00
+              C 0.95, 0.00 1.00, 0.05 1.00, 0.12
+              L 1.00, 0.48
+              C 1.00, 0.56 0.96, 0.64 0.90, 0.72
+              L 0.78, 0.88
+              C 0.72, 0.96 0.65, 1.00 0.55, 1.00
+              L 0.16, 1.00
+              C 0.07, 1.00 0.00, 0.93 0.00, 0.84
+              L 0.00, 0.62
+              C 0.00, 0.56 0.03, 0.51 0.07, 0.47
+              L 0.10, 0.43
+              C 0.13, 0.40 0.14, 0.36 0.14, 0.32
               Z
             " />
           </clipPath>
@@ -52,10 +51,9 @@ export function HeroEngineeringVisual() {
       {/* Main Visual Composition - Scales seamlessly in width */}
       <div ref={parallaxRef} className="relative w-[100%] lg:w-[125%] xl:w-[135%] aspect-[1.12/1] ml-auto mr-0 z-10">
         
-        {/* Dotted Pattern Background */}
-        {/* Placed accurately above the top-left stepped curve */}
+        {/* Dotted Pattern Background (situated above the upper-left card) */}
         <div 
-          className="absolute -top-4 lg:-top-6 left-[30%] lg:left-[35%] w-24 lg:w-32 h-24 lg:h-32 bg-[radial-gradient(circle_at_center,var(--apex-slate-300)_1.5px,transparent_1.5px)] opacity-60 -z-20 pointer-events-none"
+          className="absolute -top-8 lg:-top-10 left-[6%] lg:left-[8%] w-28 lg:w-32 h-28 lg:h-32 bg-[radial-gradient(circle_at_center,var(--apex-slate-400)_1.5px,transparent_1.5px)] opacity-60 -z-20 pointer-events-none"
           style={{ backgroundSize: "16px 16px" }}
         />
 
@@ -69,18 +67,22 @@ export function HeroEngineeringVisual() {
             {/* The decorative grey outline */}
             <path 
               d="
-                M 12, 60
-                L 12, 32
-                C 20, 28 26, 24 30, 18
-                L 34, 12
-                C 38, 6 44, 0 52, 0
-                L 84, 0
-                C 94, 0 100, 6 100, 16
-                L 100, 50
-                C 100, 60 100, 66 98, 70
-                L 94, 76
-                C 86, 88 74, 96 62, 96
-                L 28, 96
+                M 0, 50
+                C 0, 56 3, 51 7, 47
+                L 10, 43
+                C 13, 40 14, 36 14, 32
+                L 14, 20
+                L 34, 20
+                C 38, 20 42, 17 45, 13
+                L 49, 5
+                C 52, 1 56, 0 61, 0
+                L 88, 0
+                C 95, 0 100, 5 100, 12
+                L 100, 48
+                C 100, 56 96, 64 90, 72
+                L 78, 88
+                C 72, 96 65, 100 55, 100
+                L 16, 100
               " 
               stroke="var(--apex-slate-200)" 
               strokeWidth="2" 
@@ -90,10 +92,10 @@ export function HeroEngineeringVisual() {
             {/* The gold line transitioning at bottom-left */}
             <path
               d="
-                M -5, 96
-                L 28, 96
-                C 18, 96 12, 90 12, 80
-                L 12, 60
+                M -6, 100
+                L 16, 100
+                C 7, 100 0, 93 0, 84
+                L 0, 50
               "
               stroke="var(--apex-gold-500)"
               strokeWidth="2.5"
@@ -101,7 +103,7 @@ export function HeroEngineeringVisual() {
               vectorEffect="non-scaling-stroke"
             />
             {/* The gold endpoint node */}
-            <circle cx="-5" cy="96" r="4.5" fill="var(--apex-gold-500)" vectorEffect="non-scaling-stroke" />
+            <circle cx="-6" cy="100" r="4.5" fill="var(--apex-gold-500)" vectorEffect="non-scaling-stroke" />
           </svg>
         </div>
 
@@ -110,14 +112,14 @@ export function HeroEngineeringVisual() {
           Inset slightly to create the perfect uniform gap between the image boundary and the outer contour lines.
         */}
         <div 
-          className="absolute inset-[15px] lg:inset-[20px]"
+          className="absolute inset-[14px] lg:inset-[18px]"
           style={{ clipPath: "url(#heroShape)", WebkitClipPath: "url(#heroShape)" }}
         >
           <Image
             src="/Images/Hero-img.png"
             alt="Apex Solutions Engineering Team"
             fill
-            className="object-cover object-[55%_35%] lg:object-[45%_35%]"
+            className="object-cover object-[55%_35%] lg:object-[48%_35%]"
             priority
             sizes="(max-width: 1024px) 100vw, 65vw"
           />
@@ -126,28 +128,26 @@ export function HeroEngineeringVisual() {
         {/* Floating Card 1: Custom Software (Top Left) */}
         <div 
           ref={card1Ref} 
-          className="absolute top-[18%] lg:top-[22%] -left-[14%] lg:-left-[6%] xl:-left-[8%] bg-white px-5 py-4 lg:px-6 lg:py-5 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 w-[190px] lg:w-[220px]"
+          className="absolute top-[6%] lg:top-[8%] -left-[2%] lg:-left-[1%] xl:left-[0%] bg-white p-5 lg:p-6 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 w-[190px] lg:w-[220px]"
         >
-          <div className="flex gap-3 mb-2">
-            <div className="w-10 h-10 shrink-0 rounded-lg bg-apex-surface-50 flex items-center justify-center text-apex-gold-500 border border-apex-border/30">
-              <Code className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[13px] font-bold text-apex-navy-900 leading-tight">Custom Software<br/>Development</p>
-            </div>
+          <div className="w-10 h-10 rounded-lg bg-apex-surface-50 flex items-center justify-center text-apex-gold-500 border border-apex-border/30 mb-3">
+            <Code className="w-5 h-5" />
           </div>
+          <p className="text-[14px] font-bold text-apex-navy-900 leading-tight mb-2">
+            Custom Software<br/>Development
+          </p>
           <p className="text-[11.5px] text-apex-slate-500 leading-snug mb-3">
             Scalable, secure &amp; future-ready solutions.
           </p>
-          <div className="flex items-center gap-1.5 text-[11px] font-bold text-apex-navy-800 uppercase tracking-wider group cursor-pointer">
-            Explore <ArrowRight className="w-3 h-3 text-apex-gold-500 transition-transform group-hover:translate-x-1" />
+          <div className="flex items-center justify-end text-apex-gold-500 cursor-pointer group">
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </div>
         </div>
 
         {/* Floating Card 2: 150+ Experts (Top Right) */}
         <div 
           ref={card2Ref} 
-          className="absolute top-[28%] lg:top-[32%] -right-[6%] lg:-right-[4%] xl:-right-[6%] bg-apex-navy-900 px-5 py-4 lg:px-6 lg:py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(8,30,66,0.25)] border border-apex-navy-800 z-20"
+          className="absolute top-[16%] lg:top-[20%] -right-[4%] lg:-right-[2%] xl:-right-[4%] bg-apex-navy-900 px-5 py-4 lg:px-6 lg:py-5 rounded-2xl shadow-[0_20px_40px_-10px_rgba(8,30,66,0.25)] border border-apex-navy-800 z-20"
         >
           <div className="flex items-center gap-4">
             <div className="w-11 h-11 rounded-full border border-apex-navy-700 bg-transparent flex items-center justify-center text-apex-gold-500">
@@ -163,36 +163,39 @@ export function HeroEngineeringVisual() {
         {/* Floating Card 3: AI & Automation (Bottom Left) */}
         <div 
           ref={card3Ref} 
-          className="absolute bottom-[24%] lg:bottom-[28%] -left-[14%] lg:-left-[6%] xl:-left-[8%] bg-white px-5 py-4 lg:px-6 lg:py-5 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 w-[190px] lg:w-[220px]"
+          className="absolute bottom-[16%] lg:bottom-[20%] -left-[8%] lg:-left-[6%] xl:-left-[6%] bg-white p-5 lg:p-6 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 w-[190px] lg:w-[220px]"
         >
-          <div className="flex gap-3 mb-2">
-            <div className="w-10 h-10 shrink-0 rounded-lg bg-apex-surface-50 flex items-center justify-center text-apex-gold-500 border border-apex-border/30">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div className="flex items-center">
-              <p className="text-[13px] font-bold text-apex-navy-900 leading-tight">AI &amp; Automation</p>
-            </div>
+          <div className="w-10 h-10 rounded-lg bg-apex-surface-50 flex items-center justify-center text-apex-gold-500 border border-apex-border/30 mb-3">
+            <Sparkles className="w-5 h-5" />
           </div>
+          <p className="text-[14px] font-bold text-apex-navy-900 leading-tight mb-2">
+            AI &amp; Automation
+          </p>
           <p className="text-[11.5px] text-apex-slate-500 leading-snug mb-3">
             Intelligent automation for smarter operations.
           </p>
-          <div className="flex items-center gap-1.5 text-[11px] font-bold text-apex-navy-800 uppercase tracking-wider group cursor-pointer">
-            Explore <ArrowRight className="w-3 h-3 text-apex-gold-500 transition-transform group-hover:translate-x-1" />
+          <div className="flex items-center justify-end text-apex-gold-500 cursor-pointer group">
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </div>
         </div>
 
         {/* Floating Card 4: 98% Satisfaction (Bottom Right) */}
         <div 
           ref={card4Ref} 
-          className="absolute bottom-[6%] lg:bottom-[8%] right-[2%] lg:right-[6%] xl:right-[8%] bg-white px-5 py-4 lg:px-6 lg:py-5 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 flex items-center gap-4"
+          className="absolute bottom-[4%] lg:bottom-[6%] right-[4%] lg:right-[6%] xl:right-[8%] bg-white p-5 lg:p-6 rounded-2xl shadow-[0_15px_35px_-5px_rgba(8,30,66,0.1)] border border-apex-border/40 z-20 min-w-[170px]"
         >
-          <div>
-            <p className="text-[30px] lg:text-[34px] font-black text-apex-gold-500 leading-none mb-1">98%</p>
-            <p className="text-[11.5px] lg:text-[12.5px] font-bold text-apex-navy-900 leading-tight">Client<br/>Satisfaction</p>
-          </div>
-          <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-full border border-apex-surface-200 bg-transparent flex items-center justify-center text-apex-gold-500">
-            <LineChart className="w-5 h-5 lg:w-[22px] lg:h-[22px]" />
-          </div>
+          <p className="text-[32px] lg:text-[36px] font-black text-apex-gold-500 leading-none mb-1">98%</p>
+          <p className="text-[12px] lg:text-[13px] font-bold text-apex-navy-900 leading-tight mb-3">Client Satisfaction</p>
+          <svg className="w-full h-7" viewBox="0 0 100 24" fill="none">
+            <path 
+              d="M 2 18 Q 18 4, 34 16 T 66 10 T 96 4" 
+              stroke="var(--apex-gold-500)" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              fill="none" 
+            />
+            <circle cx="96" cy="4" r="3" fill="var(--apex-gold-500)" />
+          </svg>
         </div>
 
       </div>
