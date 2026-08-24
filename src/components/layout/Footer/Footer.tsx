@@ -1,42 +1,12 @@
-"use client";
-
-import { useRef, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { footerNavigation } from "@/data/navigation";
 import { FooterBrand } from "./FooterBrand";
 import { FooterColumn } from "./FooterColumn";
-import { FooterContact } from "./FooterContact";
 import { FooterBottom } from "./FooterBottom";
-import { createFooterRevealTimeline } from "@/animations/footer";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { gsap } from "@/animations/gsap";
 
 export function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
-  const brandRef = useRef<HTMLDivElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
-  const navColumnRefs = useRef<(HTMLDivElement | null)[]>([]);
-  
-  const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const { cleanup } = createFooterRevealTimeline(
-        footerRef,
-        brandRef,
-        navColumnRefs,
-        bottomRef,
-        prefersReducedMotion
-      );
-      return cleanup;
-    }, footerRef);
-    
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
-
   return (
     <footer 
-      ref={footerRef}
       className="bg-apex-navy-900 border-t border-apex-border/10 overflow-hidden"
       aria-label="Site Footer"
     >
@@ -46,31 +16,45 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">
           
           {/* Brand Area */}
-          <div 
-            ref={brandRef} 
-            className="col-span-1 lg:col-span-4 lg:pr-12 will-change-transform"
-          >
+          <div className="col-span-1 lg:col-span-4 lg:pr-12">
             <FooterBrand />
           </div>
           
-          {/* Navigation Area */}
+          {/* Navigation Area & Badges */}
           <div className="col-span-1 lg:col-span-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
               
-              <div ref={(el) => { navColumnRefs.current[0] = el; }} className="will-change-transform">
+              <div>
                 <FooterColumn title="Company" links={footerNavigation.company} />
               </div>
               
-              <div ref={(el) => { navColumnRefs.current[1] = el; }} className="will-change-transform">
+              <div>
                 <FooterColumn title="Services" links={footerNavigation.services} />
               </div>
               
-              <div ref={(el) => { navColumnRefs.current[2] = el; }} className="will-change-transform">
+              <div>
                 <FooterColumn title="Industries" links={footerNavigation.industries} />
               </div>
 
-              <div ref={(el) => { navColumnRefs.current[3] = el; }} className="will-change-transform">
-                <FooterContact />
+              {/* Trust Badges */}
+              <div className="flex flex-col gap-6 lg:gap-8">
+                <h3 className="text-[12px] uppercase tracking-widest font-semibold text-apex-slate-500">
+                  Certifications
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-apex-navy-800/50 border border-apex-border/20 rounded flex items-center justify-center p-3 h-16">
+                    <span className="text-apex-slate-400 text-[10px] font-bold text-center leading-tight">ISO 27001<br/>CERTIFIED</span>
+                  </div>
+                  <div className="bg-apex-navy-800/50 border border-apex-border/20 rounded flex items-center justify-center p-3 h-16">
+                    <span className="text-apex-slate-400 text-[10px] font-bold text-center leading-tight">AWS<br/>PARTNER</span>
+                  </div>
+                  <div className="bg-apex-navy-800/50 border border-apex-border/20 rounded flex items-center justify-center p-3 h-16">
+                    <span className="text-apex-slate-400 text-[10px] font-bold text-center leading-tight">SOC 2<br/>TYPE II</span>
+                  </div>
+                  <div className="bg-apex-navy-800/50 border border-apex-border/20 rounded flex items-center justify-center p-3 h-16">
+                    <span className="text-apex-slate-400 text-[10px] font-bold text-center leading-tight">HIPAA<br/>COMPLIANT</span>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -79,7 +63,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div ref={bottomRef} className="will-change-transform">
+        <div className="mt-16">
           <FooterBottom />
         </div>
 

@@ -2,7 +2,8 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import Image from "next/image";
+import { Menu, ArrowRight } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/animations/gsap";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -10,7 +11,6 @@ import { cn } from "@/lib/utils";
 
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 export function Header() {
@@ -29,12 +29,14 @@ export function Header() {
     if (!headerRef.current || prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(headerRef.current, {
-        y: -20,
+      const tl = gsap.timeline({ delay: 0.1 });
+      
+      tl.from([logoRef.current, innerRef.current?.querySelector('nav'), ctaRef.current], {
+        y: 15,
         opacity: 0,
         duration: 0.8,
+        stagger: 0.1,
         ease: "power3.out",
-        delay: 0.1,
       });
     }, headerRef);
 
@@ -47,7 +49,7 @@ export function Header() {
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        start: "top -80",
+        start: "top -40",
         end: 99999,
         toggleClass: {
           targets: headerRef.current,
@@ -56,11 +58,10 @@ export function Header() {
         onToggle: (self) => {
           setIsCompact(self.isActive);
           
-          // Animate properties that are safe for performance
           gsap.to(innerRef.current, {
-            paddingTop: self.isActive ? "12px" : "24px",
-            paddingBottom: self.isActive ? "12px" : "24px",
-            duration: 0.3,
+            paddingTop: self.isActive ? "16px" : "28px",
+            paddingBottom: self.isActive ? "16px" : "28px",
+            duration: 0.4,
             ease: "power2.out",
           });
         }
@@ -75,22 +76,31 @@ export function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
-          isCompact ? "bg-white/90 backdrop-blur-md border-b border-apex-border shadow-sm" : "bg-transparent border-b border-transparent"
+          "fixed top-0 left-0 w-full z-50 transition-colors duration-400 border-b",
+          isCompact ? "bg-white/95 backdrop-blur-md shadow-sm border-apex-border/40" : "bg-white border-transparent"
         )}
       >
+        {/* Main Navigation */}
         <Container>
-          <div ref={innerRef} className="flex items-center justify-between pt-6 pb-6">
+          <div ref={innerRef} className="flex items-center justify-between pt-7 pb-7">
             {/* Logo */}
             <Link 
               href="/" 
               ref={logoRef}
               className={cn(
-                "font-bold tracking-tight text-apex-navy-800 transition-all duration-300 origin-left flex items-center",
-                isCompact ? "text-xl scale-95" : "text-2xl scale-100"
+                "flex items-center transition-transform duration-300 origin-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apex-gold-500 rounded-sm",
+                isCompact ? "scale-95" : "scale-100"
               )}
+              aria-label="Apex Solutions Home"
             >
-              Apex<span className="text-apex-gold-500">.</span>
+              <Image 
+                src="/Images/logo-Apex.png" 
+                alt="Apex Solutions Logo" 
+                width={240} 
+                height={56} 
+                priority
+                className="w-auto h-9 lg:h-11 object-contain"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -99,9 +109,13 @@ export function Header() {
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-4" ref={ctaRef}>
               <div className="hidden lg:block">
-                <Button variant={isCompact ? "primary" : "primary"} size="sm" magnetic withArrow>
-                  Start a Project
-                </Button>
+                <Link 
+                  href="/contact" 
+                  className="group inline-flex items-center justify-center bg-apex-navy-900 hover:bg-apex-navy-800 text-white text-[15px] font-semibold px-6 py-2.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apex-gold-500"
+                >
+                  Contact Us
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </div>
 
               {/* Mobile Menu Toggle */}
@@ -123,3 +137,4 @@ export function Header() {
     </>
   );
 }
+

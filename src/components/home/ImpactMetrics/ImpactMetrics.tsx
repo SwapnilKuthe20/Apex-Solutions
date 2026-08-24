@@ -1,117 +1,40 @@
-"use client";
-
-import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { metricsConfig } from "@/data/metrics";
 import { MetricItem } from "./MetricItem";
-import { createMetricsIntroTimeline, createMetricItemReveal } from "@/animations/metrics";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useLazyGSAP } from "@/hooks/useLazyGSAP";
-import { gsap } from "@/animations/gsap";
 
 export function ImpactMetrics() {
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  // Intro Refs
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const copyRef = useRef<HTMLParagraphElement>(null);
-
-  // Metrics Grid Refs
-  const metricsContainerRef = useRef<HTMLDivElement>(null);
-  const metricItemsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const prefersReducedMotion = useReducedMotion();
-
-  useLazyGSAP(sectionRef, () => {
-    const ctx = gsap.context(() => {
-      const intro = createMetricsIntroTimeline(
-        sectionRef,
-        eyebrowRef,
-        headlineRef,
-        copyRef,
-        prefersReducedMotion
-      );
-
-      const items = createMetricItemReveal(
-        metricsContainerRef,
-        metricItemsRef,
-        prefersReducedMotion
-      );
-
-      return () => {
-        intro.cleanup();
-        items.cleanup();
-      };
-    }, sectionRef);
-    
-    return () => ctx.revert();
-  });
-
-  // Determine layout based on how many metrics we have.
-  // The plan requested a featured large metric, followed by supporting metrics.
-  const featuredMetric = metricsConfig.metrics[0];
-  const supportingMetrics = metricsConfig.metrics.slice(1);
-
   return (
-    <Section variant="white" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>
+    <Section variant="surface" className="py-20 md:py-28 overflow-hidden bg-apex-navy-900">
       <Container>
         
-        {/* Intro Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-20 md:mb-32">
-          <div className="col-span-1 lg:col-span-7 xl:col-span-8">
-            <div ref={eyebrowRef} className="will-change-transform mb-6">
-              <Eyebrow>{metricsConfig.eyebrow}</Eyebrow>
-            </div>
-            <h2 
-              ref={headlineRef}
-              className="text-[34px] md:text-[48px] lg:text-[64px] leading-tight font-semibold text-apex-navy-800 tracking-tight will-change-transform"
-            >
+        {/* Top Split Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+          {/* Left: Text Content */}
+          <div className="flex flex-col justify-center">
+            <Eyebrow className="mb-6 text-apex-gold-500">{metricsConfig.eyebrow}</Eyebrow>
+            <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-white tracking-tight mb-6">
               {metricsConfig.headline}
             </h2>
-          </div>
-          <div className="col-span-1 lg:col-span-5 xl:col-span-4 flex items-end">
-            <p 
-              ref={copyRef}
-              className="text-[15px] md:text-[18px] lg:text-[20px] text-apex-slate-500 leading-relaxed will-change-transform pb-2"
-            >
+            <p className="text-[16px] md:text-[18px] text-apex-slate-400 leading-relaxed max-w-lg">
               {metricsConfig.description}
             </p>
           </div>
+          
+          {/* Right: Large Image Placeholder */}
+          <div className="relative w-full aspect-video lg:aspect-auto lg:h-[400px] rounded-2xl overflow-hidden bg-apex-navy-800 border border-apex-border/20">
+            {/* Abstract visual placeholder for image */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-apex-navy-900 via-apex-navy-800 to-apex-slate-800" />
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#DCE3EC 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          </div>
         </div>
 
-        {/* Editorial Metrics Grid */}
-        {/* We use a standard div grid for metrics */}
-        <div 
-          ref={metricsContainerRef}
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-0"
-        >
-          {/* Featured Metric (Takes up half the screen on desktop) */}
-          {featuredMetric && (
-            <div className="col-span-1 md:col-span-12 lg:col-span-5 lg:pr-12 lg:border-r border-apex-border/40 relative">
-              <MetricItem 
-                metric={featuredMetric} 
-                isFeatured={true}
-                ref={(el) => { metricItemsRef.current[0] = el; }}
-              />
-            </div>
-          )}
-
-          {/* Supporting Metrics (Grid on the right side) */}
-          {supportingMetrics.length > 0 && (
-            <div className="col-span-1 md:col-span-12 lg:col-span-7 lg:pl-12 grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16 pt-8 lg:pt-0 border-t lg:border-t-0 border-apex-border/40">
-              {supportingMetrics.map((metric, idx) => (
-                <MetricItem 
-                  key={metric.id}
-                  metric={metric}
-                  isFeatured={false}
-                  ref={(el) => { metricItemsRef.current[idx + 1] = el; }}
-                />
-              ))}
-            </div>
-          )}
+        {/* Bottom Metrics Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-16 border-t border-apex-border/20">
+          {metricsConfig.metrics.map((metric) => (
+            <MetricItem key={metric.id} metric={metric} />
+          ))}
         </div>
 
       </Container>

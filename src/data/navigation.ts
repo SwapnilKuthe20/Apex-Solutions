@@ -1,13 +1,35 @@
 import { NavigationItem } from "@/types";
 
 export const primaryNavigation: NavigationItem[] = [
-  { id: "services", label: "Services", href: "/services" },
-  { id: "solutions", label: "Solutions", href: "/solutions" },
-  { id: "industries", label: "Industries", href: "/industries" },
-  { id: "products", label: "Products", href: "/products" },
+  { id: "home", label: "Home", href: "/" },
+  { 
+    id: "services", 
+    label: "Services", 
+    href: "/services",
+    children: [
+      { id: "digital-transformation", label: "Digital Transformation", href: "/services/digital-transformation" },
+      { id: "cloud-architecture", label: "Cloud Architecture", href: "/services/cloud-architecture" },
+    ]
+  },
+  { 
+    id: "solutions", 
+    label: "Solutions", 
+    href: "/solutions",
+    children: [
+      { id: "enterprise", label: "Enterprise Solutions", href: "/solutions/enterprise" },
+      { id: "startup", label: "Startup Solutions", href: "/solutions/startup" },
+    ]
+  },
+  { 
+    id: "products", 
+    label: "Products", 
+    href: "/products",
+    children: [
+      { id: "apex-core", label: "Apex Core", href: "/products/core" },
+      { id: "apex-analytics", label: "Apex Analytics", href: "/products/analytics" },
+    ]
+  },
   { id: "technologies", label: "Technologies", href: "/technologies" },
-  { id: "case-studies", label: "Case Studies", href: "/case-studies" },
-  { id: "insights", label: "Insights", href: "/insights" },
   { id: "about", label: "About Us", href: "/about" },
 ];
 

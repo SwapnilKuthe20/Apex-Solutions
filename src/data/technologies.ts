@@ -19,6 +19,15 @@ export interface TechnologyCategory {
   technologies: Technology[];
 }
 
+export const simpleEcosystem = [
+  { id: "web", label: "Web", icon: Monitor },
+  { id: "mobile", label: "Mobile", icon: Smartphone },
+  { id: "data", label: "Data", icon: Database },
+  { id: "strategy", label: "Strategy", icon: BrainCircuit },
+  { id: "uiux", label: "UI/UX", icon: Monitor },
+  { id: "cloud", label: "Cloud", icon: Cloud },
+];
+
 export const technologyEcosystemConfig = {
   eyebrow: "BUILT WITH MODERN TECHNOLOGIES",
   headline: "Our Technology Ecosystem",

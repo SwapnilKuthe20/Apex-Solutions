@@ -1,65 +1,65 @@
-export type CapabilityVariant = "featured" | "standard" | "wide";
-
 export interface Capability {
   id: string;
-  number: string;
   title: string;
   shortDescription: string;
-  variant: CapabilityVariant;
   href?: string;
-  iconType?: "software" | "ai" | "cloud" | "enterprise" | "data";
+  iconBg: string;
+  iconColor: string;
 }
 
 export const capabilitiesConfig = {
-  eyebrow: "WHAT WE BUILD",
-  headline: "End-to-End Digital Solutions That Drive Impact",
+  eyebrow: "OUR SERVICES",
+  headline: "End-to-End Capabilities. Built for Impact.",
   description:
-    "Apex engineers software, automation, cloud and data systems designed around real business outcomes.",
+    "We provide comprehensive engineering services designed to accelerate your digital transformation.",
   items: [
     {
       id: "custom-software",
-      number: "01",
-      title: "Custom Software Engineering",
+      title: "Custom Software Development",
       shortDescription:
         "High-performance applications tailored to complex operational requirements. Built for scale, security, and resilience.",
-      variant: "featured",
-      iconType: "software",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
     },
     {
       id: "ai-automation",
-      number: "02",
       title: "AI & Automation",
       shortDescription:
         "Intelligent workflows and predictive models that transform data into operational advantage.",
-      variant: "standard",
-      iconType: "ai",
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
     },
     {
       id: "cloud-infrastructure",
-      number: "03",
-      title: "Cloud & Infrastructure",
+      title: "Cloud Architecture & DevOps",
       shortDescription:
         "Secure, scalable environments engineered for high availability and continuous deployment.",
-      variant: "standard",
-      iconType: "cloud",
-    },
-    {
-      id: "enterprise-platforms",
-      number: "04",
-      title: "Enterprise Platforms",
-      shortDescription:
-        "Integrated CRM, ERP, and bespoke portal systems that unify disparate business functions.",
-      variant: "standard",
-      iconType: "enterprise",
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
     },
     {
       id: "data-analytics",
-      number: "05",
-      title: "Data, Analytics & GIS",
+      title: "Data & Analytics",
       shortDescription:
-        "Real-time analytics, geospatial mapping, and robust data pipelines for strategic decision-making.",
-      variant: "wide",
-      iconType: "data",
+        "Real-time analytics and robust data pipelines for strategic decision-making and business intelligence.",
+      iconBg: "bg-red-100",
+      iconColor: "text-red-600",
+    },
+    {
+      id: "ui-ux",
+      title: "UI/UX Design",
+      shortDescription:
+        "User-centric interfaces that drive engagement, adoption, and deliver exceptional digital experiences.",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+    {
+      id: "enterprise-platforms",
+      title: "Enterprise Platforms",
+      shortDescription:
+        "Integrated CRM, ERP, and bespoke portal systems that unify disparate business functions seamlessly.",
+      iconBg: "bg-indigo-100",
+      iconColor: "text-indigo-600",
     },
   ] as Capability[],
 };

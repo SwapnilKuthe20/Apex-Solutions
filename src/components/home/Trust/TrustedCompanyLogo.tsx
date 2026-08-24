@@ -5,10 +5,22 @@ interface TrustedCompanyLogoProps {
 }
 
 export function TrustedCompanyLogo({ company }: TrustedCompanyLogoProps) {
+  // Brand colors simulation for text placeholders to match visual density
+  const getBrandColor = (id: string) => {
+    switch (id) {
+      case "google": return "text-[#4285F4]";
+      case "microsoft": return "text-[#F25022]";
+      case "aws": return "text-[#FF9900]";
+      case "meta": return "text-[#0668E1]";
+      case "hp": return "text-[#0096D6]";
+      case "zoho": return "text-[#000000]";
+      default: return "text-apex-navy-800";
+    }
+  };
+
   return (
-    <div className="w-[160px] h-[80px] md:w-[200px] md:h-[100px] flex-shrink-0 flex items-center justify-center bg-white border border-apex-border rounded-xl transition-all duration-300 opacity-60 hover:opacity-100 hover:-translate-y-1 hover:border-apex-gold-500 shadow-sm mx-4">
-      {/* Fallback to text if no SVG logo is provided */}
-      <span className="font-semibold text-apex-navy-800 text-lg tracking-wide select-none" aria-label={company.name}>
+    <div className="flex items-center justify-center p-2 opacity-80 hover:opacity-100 transition-opacity duration-300">
+      <span className={`font-bold text-2xl tracking-tighter select-none ${getBrandColor(company.id)}`} aria-label={company.name}>
         {company.logoText}
       </span>
     </div>

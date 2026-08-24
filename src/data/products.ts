@@ -1,62 +1,44 @@
-export interface ProductFeature {
-  label: string;
-  value: string;
-}
-
 export interface ProductData {
   id: string;
-  number: string;
   title: string;
-  subtitle: string;
   description: string;
-  features: ProductFeature[];
-  visualType: "portal" | "pipeline" | "dashboard";
+  iconBg: string;
+  iconColor: string;
 }
 
 export const productsConfig = {
-  eyebrow: "PRODUCTS & PLATFORMS",
-  headline: "Products Built Around Real Business Needs",
+  eyebrow: "CORE PLATFORMS",
+  headline: "Our Core Platforms",
   description:
-    "From focused business applications to scalable digital platforms, Apex engineers products designed around users, workflows and continuous growth.",
+    "We provide enterprise-grade platforms to accelerate development and streamline operations.",
   products: [
     {
-      id: "enterprise-portal",
-      number: "01",
-      title: "Apex Nexus Portal",
-      subtitle: "Unified Enterprise Operations",
-      description: "A centralized platform integrating disparate business systems into a single, cohesive interface. Nexus reduces context-switching and standardizes operational workflows across the enterprise.",
-      features: [
-        { label: "Architecture", value: "Micro-frontends" },
-        { label: "Deployment", value: "Cloud-Native" },
-        { label: "Security", value: "Zero-Trust" }
-      ],
-      visualType: "portal"
+      id: "web",
+      title: "Web Platform",
+      description: "Modern, responsive, and secure web applications built for scale and performance.",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
     },
     {
-      id: "data-pipeline",
-      number: "02",
-      title: "Apex DataStream",
-      subtitle: "High-Volume Analytics Pipeline",
-      description: "Engineered to ingest, process, and analyze massive datasets in real-time. DataStream powers predictive models and operational intelligence without latency bottlenecks.",
-      features: [
-        { label: "Throughput", value: "High-Velocity" },
-        { label: "Processing", value: "Stream & Batch" },
-        { label: "Storage", value: "Distributed Data Lake" }
-      ],
-      visualType: "pipeline"
+      id: "mobile",
+      title: "Mobile Platform",
+      description: "Native and cross-platform mobile solutions delivering seamless user experiences.",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
     },
     {
-      id: "iot-dashboard",
-      number: "03",
-      title: "Apex Command Center",
-      subtitle: "Industrial IoT & Telemetry",
-      description: "A specialized visualization platform for industrial operations. Monitor thousands of sensor endpoints, manage physical assets, and trigger automated alerts from a unified dashboard.",
-      features: [
-        { label: "Protocol", value: "MQTT & WebSockets" },
-        { label: "Latency", value: "Sub-second" },
-        { label: "Interface", value: "Real-time GIS" }
-      ],
-      visualType: "dashboard"
+      id: "data",
+      title: "Data Platform",
+      description: "Robust data pipelines, warehousing, and analytics for actionable business insights.",
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
+    },
+    {
+      id: "cloud",
+      title: "Cloud Platform",
+      description: "Scalable cloud infrastructure and DevOps automation for reliable deployment.",
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
     }
   ] as ProductData[],
 };

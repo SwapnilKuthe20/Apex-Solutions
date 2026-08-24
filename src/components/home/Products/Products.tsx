@@ -1,97 +1,60 @@
-"use client";
-
-import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
-import { ProductStory } from "./ProductStory";
-import { ProductSlider } from "./ProductSlider";
 import { productsConfig } from "@/data/products";
-import { createProductsIntroTimeline, createProductSliderTimeline } from "@/animations/products";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useLazyGSAP } from "@/hooks/useLazyGSAP";
-import { gsap } from "@/animations/gsap";
+import { Monitor, Smartphone, Database, Cloud } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function Products() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const copyRef = useRef<HTMLParagraphElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
-  useLazyGSAP(sectionRef, () => {
-    const ctx = gsap.context(() => {
-      // 1. Intro Animation Sequence
-      const intro = createProductsIntroTimeline(
-        sectionRef,
-        eyebrowRef,
-        headlineRef,
-        copyRef,
-        prefersReducedMotion
-      );
-
-      // 2. Horizontal Storytelling Pinning Sequence
-      const horizontal = createProductSliderTimeline(
-        sectionRef,
-        trackRef,
-        productsConfig.products.length,
-        prefersReducedMotion
-      );
-
-      return () => {
-        intro.cleanup();
-        horizontal.cleanup();
-      };
-    }, sectionRef);
-    
-    return () => ctx.revert();
-  });
+  const getIcon = (id: string) => {
+    switch(id) {
+      case "web": return Monitor;
+      case "mobile": return Smartphone;
+      case "data": return Database;
+      case "cloud": return Cloud;
+      default: return Monitor;
+    }
+  };
 
   return (
-    <Section variant="surface" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>
-      
-      {/* Intro Header */}
-      <Container className="mb-16 md:mb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <div className="col-span-1 lg:col-span-7 xl:col-span-8">
-            <div ref={eyebrowRef} className="will-change-transform">
-              <Eyebrow className="mb-6">{productsConfig.eyebrow}</Eyebrow>
-            </div>
-            <h2 
-              ref={headlineRef}
-              className="text-[34px] md:text-[48px] lg:text-[64px] leading-tight font-semibold text-apex-navy-800 tracking-tight will-change-transform"
-            >
-              {productsConfig.headline}
-            </h2>
-          </div>
-          <div className="col-span-1 lg:col-span-5 xl:col-span-4 flex items-end">
-            <p 
-              ref={copyRef}
-              className="text-[15px] md:text-[18px] lg:text-[20px] text-apex-slate-500 leading-relaxed will-change-transform pb-2"
-            >
-              {productsConfig.description}
-            </p>
-          </div>
+    <Section variant="white" className="py-20 md:py-28 overflow-hidden bg-white">
+      <Container>
+        {/* Intro Header */}
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+          <Eyebrow className="justify-center mb-6">{productsConfig.eyebrow}</Eyebrow>
+          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-apex-navy-800 tracking-tight mb-6">
+            {productsConfig.headline}
+          </h2>
+          <p className="text-[16px] md:text-[18px] text-apex-slate-500 leading-relaxed max-w-2xl mx-auto">
+            {productsConfig.description}
+          </p>
+        </div>
+
+        {/* 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {productsConfig.products.map((product) => {
+            const Icon = getIcon(product.id);
+            return (
+              <div key={product.id} className="flex flex-col group cursor-pointer">
+                <div className={cn(
+                  "w-full aspect-[4/3] rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2",
+                  product.iconBg
+                )}>
+                  <Icon className={cn("w-12 h-12", product.iconColor)} />
+                </div>
+                
+                <h3 className="text-xl font-bold text-apex-navy-800 mb-3 group-hover:text-apex-gold-500 transition-colors">
+                  {product.title}
+                </h3>
+                
+                <p className="text-sm text-apex-slate-500 leading-relaxed">
+                  {product.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </Container>
-
-      {/* 
-        Horizontal Pinned Story Area 
-        Unlike Industry track which is a continuous ribbon, this is full-width stories.
-      */}
-      <div className="w-full relative px-6 md:px-8 lg:px-0">
-        <ProductSlider ref={trackRef}>
-          {productsConfig.products.map((product, index) => (
-            <ProductStory 
-              key={product.id} 
-              product={product} 
-              isLast={index === productsConfig.products.length - 1} 
-            />
-          ))}
-        </ProductSlider>
-      </div>
-
     </Section>
   );
 }

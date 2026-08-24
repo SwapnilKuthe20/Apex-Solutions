@@ -1,106 +1,73 @@
-"use client";
-
-import { useRef, useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/effect-fade";
-
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { testimonialsConfig } from "@/data/testimonials";
-import { TestimonialSlide } from "./TestimonialSlide";
-import { TestimonialControls } from "./TestimonialControls";
-import { createTestimonialsIntroTimeline } from "@/animations/testimonials";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useLazyGSAP } from "@/hooks/useLazyGSAP";
-import { gsap } from "@/animations/gsap";
+import Image from "next/image";
 
 export function Testimonials() {
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  // Intro Refs
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const copyRef = useRef<HTMLParagraphElement>(null);
-  const swiperContainerRef = useRef<HTMLDivElement>(null);
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const prefersReducedMotion = useReducedMotion();
-
-  useLazyGSAP(sectionRef, () => {
-    const ctx = gsap.context(() => {
-      const intro = createTestimonialsIntroTimeline(
-        sectionRef,
-        eyebrowRef,
-        headlineRef,
-        copyRef,
-        swiperContainerRef,
-        prefersReducedMotion
-      );
-
-      return () => {
-        intro.cleanup();
-      };
-    }, sectionRef);
-    
-    return () => ctx.revert();
-  });
-
   return (
-    <Section variant="white" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>
+    <Section variant="white" className="py-20 md:py-28 overflow-hidden bg-white">
       <Container>
         
         {/* Intro Header */}
-        <div className="max-w-3xl mb-16 md:mb-24">
-          <div ref={eyebrowRef} className="will-change-transform mb-6">
-            <Eyebrow>{testimonialsConfig.eyebrow}</Eyebrow>
-          </div>
-          <h2 
-            ref={headlineRef}
-            className="text-[34px] md:text-[48px] lg:text-[64px] leading-tight font-semibold text-apex-navy-900 tracking-tight will-change-transform mb-6"
-          >
-            {testimonialsConfig.headline}
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+          <Eyebrow className="justify-center mb-6">{testimonialsConfig.eyebrow}</Eyebrow>
+          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-apex-navy-800 tracking-tight mb-6">
+            Client Success Stories
           </h2>
-          <p 
-            ref={copyRef}
-            className="text-[18px] md:text-[20px] text-apex-slate-500 leading-relaxed will-change-transform max-w-xl"
-          >
+          <p className="text-[16px] md:text-[18px] text-apex-slate-500 leading-relaxed max-w-2xl mx-auto">
             {testimonialsConfig.description}
           </p>
         </div>
 
-        {/* Swiper Container */}
-        <div ref={swiperContainerRef} className="relative will-change-transform">
-          <Swiper
-            modules={[EffectFade, Navigation]}
-            effect={prefersReducedMotion ? "slide" : "fade"}
-            fadeEffect={{ crossFade: true }}
-            speed={prefersReducedMotion ? 0 : 600}
-            loop={true}
-            allowTouchMove={true}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="w-full"
-          >
-            {testimonialsConfig.testimonials.map((testimonial) => (
-              <SwiperSlide key={testimonial.id}>
-                {({ isActive }) => (
-                  <TestimonialSlide 
-                    testimonial={testimonial} 
-                    isActive={isActive} 
-                    prefersReducedMotion={prefersReducedMotion}
-                  />
-                )}
-              </SwiperSlide>
-            ))}
-            
-            {/* Custom Controls (Inside Swiper context to use useSwiper) */}
-            <TestimonialControls 
-              currentIndex={activeIndex} 
-              totalSlides={testimonialsConfig.testimonials.length} 
-            />
-          </Swiper>
+        {/* 3-Column Static Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonialsConfig.testimonials.map((testimonial) => (
+            <div 
+              key={testimonial.id}
+              className="flex flex-col bg-white border border-apex-border rounded-xl p-8 md:p-10 shadow-sm relative overflow-hidden group hover:shadow-lg transition-shadow duration-300"
+            >
+              {/* Top Accent Border */}
+              <div className="absolute top-0 left-0 w-full h-[4px] bg-apex-gold-500 transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100" />
+              <div className="absolute top-0 left-0 w-full h-[4px] bg-apex-navy-900/10" />
+
+              {/* Quote Mark */}
+              <div className="text-apex-gold-500 text-6xl leading-none font-serif mb-6 opacity-30 select-none">
+                "
+              </div>
+
+              {/* Quote Text */}
+              <p className="text-lg md:text-xl text-apex-navy-800 leading-relaxed font-medium mb-10 flex-grow">
+                "{testimonial.quote}"
+              </p>
+
+              {/* Author Info */}
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-apex-surface-100 flex-shrink-0 relative">
+                  {testimonial.image ? (
+                    <Image 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-apex-navy-800 font-bold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-apex-navy-800">
+                    {testimonial.name}
+                  </span>
+                  <span className="text-sm text-apex-slate-500">
+                    {testimonial.role}{testimonial.company && `, ${testimonial.company}`}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
       </Container>

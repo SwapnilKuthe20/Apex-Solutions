@@ -10,9 +10,9 @@ export interface Metric {
 }
 
 export const metricsConfig = {
-  eyebrow: "IMPACT",
-  headline: "Engineering That Moves Business Forward.",
-  description: "Measured in outcomes, not just deliverables. We track the real-world performance of the systems we engineer.",
+  eyebrow: "COMPANY STATS",
+  headline: "Engineering Excellence",
+  description: "We deliver robust software solutions that empower organizations to scale rapidly and operate efficiently. By applying proven engineering principles, we ensure long-term stability and success.",
   metrics: [
     {
       id: "projects",

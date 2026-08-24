@@ -1,15 +1,15 @@
 export const heroConfig = {
-  eyebrow: "DIGITAL ENGINEERING • AI • SCALE",
-  headline: "Complex systems.\nClear outcomes.",
-  highlightedWords: ["Clear outcomes."],
+  eyebrow: "ENGINEERING DIGITAL EXCELLENCE",
+  headline: "We Build Technology\nThat Drives Growth\nand Creates Impact.",
+  highlightedWords: ["Creates Impact."],
   description:
-    "We engineer enterprise-grade digital infrastructure designed for scale. No templates, just rigorous software architecture.",
+    "Apex Solutions is an enterprise technology partner specializing in AI, software development, cloud, and automation to accelerate digital transformation.",
   primaryCta: {
-    label: "Start a Project",
-    href: "/contact",
+    label: "Explore Services",
+    href: "/services",
   },
   secondaryCta: {
-    label: "Explore Capabilities",
-    href: "/capabilities",
+    label: "Watch Our Story",
+    href: "/story",
   },
 };
