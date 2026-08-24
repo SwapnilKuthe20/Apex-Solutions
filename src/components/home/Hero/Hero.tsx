@@ -61,10 +61,10 @@ export function Hero() {
       className="relative w-full min-h-[auto] md:min-h-[85vh] lg:min-h-[92vh] xl:min-h-[95vh] flex items-center bg-white overflow-x-clip pt-24 pb-16 lg:pt-28 lg:pb-8"
     >
       <Container className="relative z-10 w-full h-full max-w-[1400px] px-6 lg:px-10">
-        <div className="flex flex-col lg:flex-row h-full items-center justify-between gap-10 lg:gap-8 xl:gap-14">
+        <div className="flex flex-col lg:flex-row h-full items-center justify-between gap-10 lg:gap-4 xl:gap-8">
           
           {/* Left Column: Typography (~45% split) */}
-          <div className="w-full lg:w-[42%] flex flex-col justify-center h-full order-2 lg:order-1 mt-12 lg:mt-0">
+          <div className="w-full lg:w-[45%] flex flex-col justify-center h-full order-2 lg:order-1 mt-12 lg:mt-0 relative z-20">
             <HeroContent 
               eyebrowRef={eyebrowRef}
               headlineRef={headlineRef}
@@ -74,8 +74,8 @@ export function Hero() {
             />
           </div>
           
-          {/* Right Column: Engineering Visual (~50% split) */}
-          <div className="w-full lg:w-[55%] flex items-center justify-center lg:justify-end h-full order-1 lg:order-2 relative">
+          {/* Right Column: Engineering Visual (~55% split) */}
+          <div className="w-full lg:w-[55%] flex items-center justify-center lg:justify-end h-full order-1 lg:order-2 relative lg:-mr-10 xl:-mr-24">
             <HeroEngineeringVisual />
           </div>
           
