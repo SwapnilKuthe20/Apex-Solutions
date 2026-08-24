@@ -1,65 +1,72 @@
 export interface Capability {
   id: string;
+  number: string;
   title: string;
-  shortDescription: string;
+  description: string;
+  iconType: "code" | "ai" | "cloud" | "crm" | "mobile" | "data";
   href?: string;
-  iconBg: string;
-  iconColor: string;
 }
 
 export const capabilitiesConfig = {
-  eyebrow: "OUR SERVICES",
-  headline: "End-to-End Capabilities. Built for Impact.",
+  eyebrow: "WHAT WE BUILD",
+  headlinePrefix: "End-to-End Digital Solutions That ",
+  headlineHighlight: "Drive Impact",
   description:
-    "We provide comprehensive engineering services designed to accelerate your digital transformation.",
+    "We combine deep technical expertise with domain knowledge to build secure, scalable and future-ready digital solutions.",
   items: [
     {
       id: "custom-software",
-      title: "Custom Software Development",
-      shortDescription:
-        "High-performance applications tailored to complex operational requirements. Built for scale, security, and resilience.",
-      iconBg: "bg-blue-100",
-      iconColor: "text-blue-600",
+      number: "01",
+      title: "Custom Software\nDevelopment",
+      description:
+        "Enterprise-grade applications tailored to your business goals. Scalable, secure and built to evolve.",
+      iconType: "code",
     },
     {
       id: "ai-automation",
+      number: "02",
       title: "AI & Automation",
-      shortDescription:
-        "Intelligent workflows and predictive models that transform data into operational advantage.",
-      iconBg: "bg-orange-100",
-      iconColor: "text-orange-600",
+      description:
+        "Intelligent automation and AI solutions to optimize workflows, reduce costs and accelerate growth.",
+      iconType: "ai",
     },
     {
       id: "cloud-infrastructure",
-      title: "Cloud Architecture & DevOps",
-      shortDescription:
-        "Secure, scalable environments engineered for high availability and continuous deployment.",
-      iconBg: "bg-green-100",
-      iconColor: "text-green-600",
+      number: "03",
+      title: "Cloud & Infrastructure\nSolutions",
+      description:
+        "Modern cloud architecture, DevOps and managed infrastructure for reliability, performance and scale.",
+      iconType: "cloud",
     },
     {
-      id: "data-analytics",
-      title: "Data & Analytics",
-      shortDescription:
-        "Real-time analytics and robust data pipelines for strategic decision-making and business intelligence.",
-      iconBg: "bg-red-100",
-      iconColor: "text-red-600",
+      id: "crm-erp",
+      number: "04",
+      title: "CRM / ERP\nSolutions",
+      description:
+        "Streamline operations, unify data and empower teams with smart business systems.",
+      iconType: "crm",
     },
     {
-      id: "ui-ux",
-      title: "UI/UX Design",
-      shortDescription:
-        "User-centric interfaces that drive engagement, adoption, and deliver exceptional digital experiences.",
-      iconBg: "bg-purple-100",
-      iconColor: "text-purple-600",
+      id: "web-mobile",
+      number: "05",
+      title: "Web & Mobile\nDevelopment",
+      description:
+        "High-performance web and mobile experiences that engage users and drive real results.",
+      iconType: "mobile",
     },
     {
-      id: "enterprise-platforms",
-      title: "Enterprise Platforms",
-      shortDescription:
-        "Integrated CRM, ERP, and bespoke portal systems that unify disparate business functions seamlessly.",
-      iconBg: "bg-indigo-100",
-      iconColor: "text-indigo-600",
+      id: "data-gis",
+      number: "06",
+      title: "Data & GIS\nSolutions",
+      description:
+        "Transform data into insights with advanced analytics, dashboards and geospatial intelligence.",
+      iconType: "data",
     },
   ] as Capability[],
+  bottomCta: {
+    heading: "Have a unique challenge?",
+    subheading: "Let's build a solution that fits your business perfectly.",
+    buttonText: "Let's Talk",
+    buttonHref: "/contact",
+  },
 };

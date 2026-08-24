@@ -10,7 +10,7 @@ export function Footer() {
       className="bg-apex-navy-900 border-t border-apex-border/10 overflow-hidden"
       aria-label="Site Footer"
     >
-      <Container className="pt-20 md:pt-24 lg:pt-32 pb-8">
+      <Container className="pt-14 md:pt-20 pb-8">
         
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">

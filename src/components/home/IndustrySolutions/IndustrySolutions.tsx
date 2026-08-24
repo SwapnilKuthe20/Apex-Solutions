@@ -6,10 +6,10 @@ import { industriesConfig } from "@/data/industries";
 
 export function IndustrySolutions() {
   return (
-    <Section variant="white" className="py-20 md:py-28 overflow-hidden bg-[#F7F9FC]">
+    <Section variant="white" className="py-16 md:py-20 overflow-hidden bg-[#F7F9FC]">
       <Container>
         {/* Intro Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
           <Eyebrow className="justify-center mb-6">{industriesConfig.eyebrow}</Eyebrow>
           <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-apex-navy-800 tracking-tight mb-6">
             {industriesConfig.headline}

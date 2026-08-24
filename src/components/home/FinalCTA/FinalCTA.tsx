@@ -10,7 +10,7 @@ export function FinalCTA() {
   return (
     <Section 
       variant="navy-deep" 
-      className="relative py-20 md:py-28 overflow-hidden bg-apex-navy-900" 
+      className="relative py-16 md:py-20 overflow-hidden bg-apex-navy-900" 
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#DCE3EC 1px, transparent 1px)', backgroundSize: '32px 32px' }} />

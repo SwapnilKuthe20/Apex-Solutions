@@ -10,7 +10,6 @@ import { WhyApex } from "@/components/home/WhyApex";
 import { ImpactMetrics } from "@/components/home/ImpactMetrics";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import { Testimonials } from "@/components/home/Testimonials";
-import { Process } from "@/components/home/Process";
 import { Insights } from "@/components/home/Insights";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
@@ -29,7 +28,6 @@ export default function Home() {
       <ImpactMetrics />
       <CaseStudies />
       <Testimonials />
-      <Process />
       <Insights />
       <FinalCTA />
     </main>

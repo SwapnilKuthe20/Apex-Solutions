@@ -12,11 +12,11 @@ export function Insights() {
   }
 
   return (
-    <Section variant="white" className="py-20 md:py-28 overflow-hidden bg-white">
+    <Section variant="white" className="py-16 md:py-20 overflow-hidden bg-white">
       <Container>
         
         {/* Intro Header & Global CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
           <div className="max-w-2xl">
             <Eyebrow className="mb-6">{insightsConfig.eyebrow}</Eyebrow>
             <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-apex-navy-800 tracking-tight mb-6">

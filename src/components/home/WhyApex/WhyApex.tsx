@@ -51,7 +51,7 @@ export function WhyApex() {
   });
 
   return (
-    <Section variant="surface" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>
+    <Section variant="surface" className="py-16 md:py-24 overflow-hidden" ref={sectionRef}>
       <Container>
         
         {/* Editorial Split Layout */}

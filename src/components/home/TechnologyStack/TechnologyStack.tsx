@@ -14,10 +14,10 @@ export function TechnologyStack() {
   const nodesRef = useRef<(SVGCircleElement | null)[]>([]);
 
   return (
-    <Section variant="surface" className="py-20 md:py-28 overflow-hidden bg-apex-navy-900">
+    <Section variant="surface" className="py-16 md:py-20 overflow-hidden bg-apex-navy-900">
       <Container>
         {/* Intro Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
           <Eyebrow className="justify-center mb-6 text-apex-gold-500">{techStackConfig.eyebrow}</Eyebrow>
           <h2 className="text-[32px] md:text-[44px] lg:text-[56px] leading-[1.1] font-semibold text-white tracking-tight mb-6">
             Modern Technologies. Scalable Solutions.

@@ -70,11 +70,11 @@ export function Process() {
   }, [prefersReducedMotion, isDesktop, handleStepChange]);
 
   return (
-    <Section variant="surface" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>
+    <Section variant="surface" className="py-16 md:py-24 overflow-hidden" ref={sectionRef}>
       <Container>
         
         {/* Intro Header */}
-        <div className="max-w-3xl mb-16 md:mb-24 lg:mb-32">
+        <div className="max-w-3xl mb-12 md:mb-16">
           <div ref={eyebrowRef} className="will-change-transform mb-6">
             <Eyebrow>{processConfig.eyebrow}</Eyebrow>
           </div>

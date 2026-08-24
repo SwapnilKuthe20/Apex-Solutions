@@ -6,11 +6,11 @@ import { MetricItem } from "./MetricItem";
 
 export function ImpactMetrics() {
   return (
-    <Section variant="surface" className="py-20 md:py-28 overflow-hidden bg-apex-navy-900">
+    <Section variant="surface" className="py-16 md:py-20 overflow-hidden bg-apex-navy-900">
       <Container>
         
         {/* Top Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-12">
           {/* Left: Text Content */}
           <div className="flex flex-col justify-center">
             <Eyebrow className="mb-6 text-apex-gold-500">{metricsConfig.eyebrow}</Eyebrow>

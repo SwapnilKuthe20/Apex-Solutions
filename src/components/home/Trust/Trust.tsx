@@ -4,65 +4,60 @@ import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
-import { LogoMarquee } from "./LogoMarquee";
 import { trustConfig } from "@/data/trust";
-import { createTrustEntranceTimeline } from "@/animations/trust";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useLazyGSAP } from "@/hooks/useLazyGSAP";
-import { gsap } from "@/animations/gsap";
+import { TrustedCompanyLogo } from "./TrustedCompanyLogo";
 
 export function Trust() {
   const sectionRef = useRef<HTMLElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const copyRef = useRef<HTMLParagraphElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
-  useLazyGSAP(sectionRef, () => {
-    const ctx = gsap.context(() => {
-      const { cleanup } = createTrustEntranceTimeline(
-        sectionRef,
-        eyebrowRef,
-        headlineRef,
-        copyRef,
-        marqueeRef,
-        prefersReducedMotion
-      );
-      return cleanup;
-    }, sectionRef);
-    
-    return () => ctx.revert();
-  });
 
   return (
-    <Section variant="white" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>
+    <Section variant="white" className="relative pt-12 md:pt-16 pb-6 md:pb-8 overflow-hidden" ref={sectionRef}>
+      {/* Decorative Dot Grid - Top Left */}
+      <div 
+        className="absolute top-4 left-4 lg:left-12 w-32 lg:w-44 h-32 lg:h-44 bg-[radial-gradient(circle_at_center,var(--apex-slate-300)_1.5px,transparent_1.5px)] opacity-50 pointer-events-none -z-10"
+        style={{ backgroundSize: "16px 16px" }}
+      />
+
+      {/* Decorative Dot Grid - Right Side */}
+      <div 
+        className="absolute top-28 right-4 lg:right-12 w-32 lg:w-44 h-32 lg:h-44 bg-[radial-gradient(circle_at_center,var(--apex-slate-300)_1.5px,transparent_1.5px)] opacity-50 pointer-events-none -z-10"
+        style={{ backgroundSize: "16px 16px" }}
+      />
+
       <Container>
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-          <div ref={eyebrowRef} className="will-change-transform">
-            <Eyebrow className="justify-center mb-6">{trustConfig.eyebrow}</Eyebrow>
-          </div>
+        {/* Header content */}
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-12">
+          <Eyebrow className="justify-center mb-3.5">{trustConfig.eyebrow}</Eyebrow>
           
-          <h2 
-            ref={headlineRef}
-            className="text-[34px] md:text-[48px] lg:text-[64px] leading-tight font-semibold text-apex-navy-800 tracking-tight mb-8 will-change-transform"
-          >
+          <h2 className="text-[32px] md:text-[42px] lg:text-[48px] leading-tight font-bold text-apex-navy-900 tracking-tight mb-4">
             {trustConfig.headline}
           </h2>
           
-          <p 
-            ref={copyRef}
-            className="text-[15px] md:text-[18px] lg:text-[20px] text-apex-slate-500 leading-relaxed max-w-2xl will-change-transform"
-          >
-            {trustConfig.description}
+          <p className="text-[15px] md:text-[16px] text-apex-slate-500 leading-relaxed max-w-2xl mx-auto">
+            We partner with startups, SMEs and enterprises to build secure,<br className="hidden md:inline" /> scalable and future-ready digital solutions.
           </p>
         </div>
+
+        {/* 6 Company Logo Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-5 max-w-6xl mx-auto">
+          {trustConfig.companies.map((company) => (
+            <div 
+              key={company.id}
+              className="bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_-4px_rgba(8,30,66,0.06)] h-24 lg:h-28 flex items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:-translate-y-1 group"
+            >
+              <TrustedCompanyLogo company={company} />
+            </div>
+          ))}
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="flex items-center justify-center gap-2.5 mt-8 lg:mt-10">
+          <div className="w-8 h-1.5 rounded-full bg-apex-gold-500" />
+          <div className="w-8 h-1.5 rounded-full bg-slate-200" />
+          <div className="w-8 h-1.5 rounded-full bg-slate-200" />
+          <div className="w-8 h-1.5 rounded-full bg-slate-200" />
+        </div>
       </Container>
-      
-      {/* Marquee extends full width, breaking out of container intentionally */}
-      <div ref={marqueeRef} className="will-change-transform w-full max-w-[1920px] mx-auto">
-        <LogoMarquee />
-      </div>
     </Section>
   );
 }

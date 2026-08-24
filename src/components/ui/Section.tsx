@@ -34,7 +34,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(({
       ref={ref}
       id={id}
       className={cn(
-        "py-20 md:py-28 lg:py-36 relative overflow-hidden transition-colors duration-300",
+        "py-16 md:py-20 lg:py-24 relative overflow-hidden transition-colors duration-300",
         variantStyles[variant],
         className
       )}

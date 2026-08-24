@@ -1,58 +1,95 @@
-import { Database, Infinity as InfinityIcon, Layers, Cpu, Code2 } from "lucide-react";
-
 export interface EngineeringStepData {
   id: string;
   number: string;
   title: string;
   description: string;
-  principles: string[];
-  icon: React.ElementType;
+  iconType: "discover" | "architect" | "build" | "deploy" | "scale";
 }
 
-export const processConfig = {
-  eyebrow: "ENGINEERING APPROACH",
-  headline: "Built for Complexity. Engineered for Scale.",
-  description: "We approach software engineering as a discipline of systems thinking. Our methodology ensures resilience, security, and scalability from the very first line of code.",
+export interface PrincipleItem {
+  id: string;
+  title: string;
+  description: string;
+  iconType: "shield" | "expand" | "award" | "users";
+}
+
+export const engineeringApproachConfig = {
+  eyebrow: "OUR ENGINEERING APPROACH",
+  headlineLine1: "We Engineer. You Scale.",
+  headlineLine2Prefix: "Built for ",
+  headlineLine2Highlight: "Long-Term Impact.",
+  description:
+    "Our proven engineering approach ensures every solution is thoughtfully designed, expertly built, and continuously optimized for real-world impact.",
   steps: [
     {
-      id: "system-architecture",
+      id: "discover",
       number: "01",
-      title: "System Architecture",
-      description: "We design resilient systems capable of handling extreme data volumes and complex integration requirements without degradation.",
-      principles: ["Microservices", "Event-Driven", "High Availability"],
-      icon: Layers,
+      title: "Discover",
+      description:
+        "We understand your business,\nchallenges and goals through\nin-depth research and analysis.",
+      iconType: "discover",
     },
     {
-      id: "data-engineering",
+      id: "architect",
       number: "02",
-      title: "Data Engineering",
-      description: "We build robust data pipelines that guarantee integrity, enforce security, and enable real-time operational analytics.",
-      principles: ["Data Lakes", "Stream Processing", "Governance"],
-      icon: Database,
+      title: "Architect",
+      description:
+        "We design scalable, secure and\nfuture-ready architectures\ntailored to your needs.",
+      iconType: "architect",
     },
     {
-      id: "platform-engineering",
+      id: "build",
       number: "03",
-      title: "Platform Engineering",
-      description: "We engineer developer platforms that automate infrastructure, accelerate deployment, and enforce standardized quality.",
-      principles: ["Infrastructure as Code", "Kubernetes", "Developer Experience"],
-      icon: Cpu,
+      title: "Build",
+      description:
+        "Our expert engineers craft\nhigh-quality solutions using\nmodern technologies.",
+      iconType: "build",
     },
     {
-      id: "software-development",
+      id: "deploy",
       number: "04",
-      title: "Software Development",
-      description: "We write clean, typed, and tested code that serves as the reliable foundation for mission-critical business applications.",
-      principles: ["TypeScript/Go", "TDD", "Clean Code"],
-      icon: Code2,
+      title: "Deploy",
+      description:
+        "We ensure smooth deployment\nwith robust testing, DevOps\nand automation.",
+      iconType: "deploy",
     },
     {
-      id: "continuous-delivery",
+      id: "scale",
       number: "05",
-      title: "Continuous Delivery",
-      description: "We implement fully automated release pipelines that enable safe, frequent, and rollback-ready deployments to production.",
-      principles: ["CI/CD", "Zero-Downtime", "Observability"],
-      icon: InfinityIcon,
-    }
+      title: "Scale",
+      description:
+        "We continuously monitor,\noptimize and evolve solutions\nto drive long-term growth.",
+      iconType: "scale",
+    },
   ] as EngineeringStepData[],
+  principlesPanel: {
+    title: "Engineering\nPrinciples We Follow",
+    description: "These principles guide every decision\nwe make and every solution we build.",
+    principles: [
+      {
+        id: "security",
+        title: "Security First",
+        description: "We build secure systems with a proactive mindset.",
+        iconType: "shield",
+      },
+      {
+        id: "scalable",
+        title: "Scalable by Design",
+        description: "Future-ready solutions that grow with you.",
+        iconType: "expand",
+      },
+      {
+        id: "quality",
+        title: "Quality Driven",
+        description: "Clean code, thorough testing and best engineering practices.",
+        iconType: "award",
+      },
+      {
+        id: "success",
+        title: "Client Success",
+        description: "Your success is our measure of success.",
+        iconType: "users",
+      },
+    ] as PrincipleItem[],
+  },
 };
