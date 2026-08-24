@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { whyApexConfig } from "@/data/whyApex";
@@ -8,6 +8,7 @@ import { WhyApexStatement } from "./WhyApexStatement";
 import { WhyApexPrinciple } from "./WhyApexPrinciple";
 import { createWhyApexIntroTimeline, createWhyApexPrinciplesTimeline } from "@/animations/whyApex";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function WhyApex() {
@@ -24,7 +25,7 @@ export function WhyApex() {
 
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const intro = createWhyApexIntroTimeline(
         sectionRef,
@@ -47,7 +48,7 @@ export function WhyApex() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="surface" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>

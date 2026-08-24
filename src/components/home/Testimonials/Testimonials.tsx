@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -14,6 +14,7 @@ import { TestimonialSlide } from "./TestimonialSlide";
 import { TestimonialControls } from "./TestimonialControls";
 import { createTestimonialsIntroTimeline } from "@/animations/testimonials";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Testimonials() {
@@ -28,7 +29,7 @@ export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const intro = createTestimonialsIntroTimeline(
         sectionRef,
@@ -45,7 +46,7 @@ export function Testimonials() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="white" className="py-24 md:py-32 lg:py-40 overflow-hidden" ref={sectionRef}>

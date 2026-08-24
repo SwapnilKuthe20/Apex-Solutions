@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { EngineeringPath } from "./EngineeringPath";
 import { EngineeringStep } from "./EngineeringStep";
 import { processConfig } from "@/data/engineeringApproach";
 import { createEngineeringJourneyTimeline } from "@/animations/engineeringApproach";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function EngineeringJourney() {
@@ -15,7 +16,7 @@ export function EngineeringJourney() {
   const stepContainersRef = useRef<(HTMLDivElement | null)[]>([]);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(pinnedContainerRef, () => {
     const ctx = gsap.context(() => {
       const { cleanup } = createEngineeringJourneyTimeline(
         pinnedContainerRef,
@@ -28,7 +29,7 @@ export function EngineeringJourney() {
     }, pinnedContainerRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   // Positions on desktop relative to the SVG nodes (y offsets)
   // Node CYs in SVG are: 100, 250, 400, 550, 700

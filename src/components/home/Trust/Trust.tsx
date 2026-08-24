@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -8,6 +8,7 @@ import { LogoMarquee } from "./LogoMarquee";
 import { trustConfig } from "@/data/trust";
 import { createTrustEntranceTimeline } from "@/animations/trust";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Trust() {
@@ -18,7 +19,7 @@ export function Trust() {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const { cleanup } = createTrustEntranceTimeline(
         sectionRef,
@@ -32,7 +33,7 @@ export function Trust() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="white" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>

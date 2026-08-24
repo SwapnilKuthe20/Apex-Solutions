@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +10,7 @@ import { insightsConfig } from "@/data/insights";
 import { InsightList } from "./InsightList";
 import { createInsightsIntroTimeline } from "@/animations/insights";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Insights() {
@@ -24,7 +25,7 @@ export function Insights() {
 
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       // Find all article elements within the section to stagger them
       const articles = gsap.utils.toArray('article') as HTMLElement[];
@@ -46,7 +47,7 @@ export function Insights() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   if (insightsConfig.insights.length === 0) {
     return null; // Empty state guard as requested

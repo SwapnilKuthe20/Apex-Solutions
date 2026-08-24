@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -9,6 +9,7 @@ import { IndustryTrack } from "./IndustryTrack";
 import { industriesConfig } from "@/data/industries";
 import { createIndustryIntroTimeline, createIndustryHorizontalTimeline } from "@/animations/industrySolutions";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function IndustrySolutions() {
@@ -19,7 +20,7 @@ export function IndustrySolutions() {
   const copyRef = useRef<HTMLParagraphElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       // 1. Intro Animation Sequence
       const intro = createIndustryIntroTimeline(
@@ -45,7 +46,7 @@ export function IndustrySolutions() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="white" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>

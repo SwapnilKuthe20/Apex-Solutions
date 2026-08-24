@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -8,6 +8,7 @@ import { metricsConfig } from "@/data/metrics";
 import { MetricItem } from "./MetricItem";
 import { createMetricsIntroTimeline, createMetricItemReveal } from "@/animations/metrics";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function ImpactMetrics() {
@@ -19,12 +20,12 @@ export function ImpactMetrics() {
   const copyRef = useRef<HTMLParagraphElement>(null);
 
   // Metrics Grid Refs
-  const metricsContainerRef = useRef<HTMLDListElement>(null);
+  const metricsContainerRef = useRef<HTMLDivElement>(null);
   const metricItemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const intro = createMetricsIntroTimeline(
         sectionRef,
@@ -47,7 +48,7 @@ export function ImpactMetrics() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   // Determine layout based on how many metrics we have.
   // The plan requested a featured large metric, followed by supporting metrics.
@@ -82,8 +83,8 @@ export function ImpactMetrics() {
         </div>
 
         {/* Editorial Metrics Grid */}
-        {/* We use a definition list <dl> for semantic accessibility of the metrics */}
-        <dl 
+        {/* We use a standard div grid for metrics */}
+        <div 
           ref={metricsContainerRef}
           className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-0"
         >
@@ -111,7 +112,7 @@ export function ImpactMetrics() {
               ))}
             </div>
           )}
-        </dl>
+        </div>
 
       </Container>
     </Section>

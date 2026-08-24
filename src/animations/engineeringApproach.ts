@@ -68,8 +68,12 @@ export const createEngineeringJourneyTimeline = (
   stepContainersRef: React.MutableRefObject<(HTMLElement | null)[]>,
   prefersReducedMotion: boolean
 ) => {
-  // We use one master timeline with scrub for the pinning behavior
-  const tl = gsap.timeline({
+  const mm = gsap.matchMedia();
+  let tl: gsap.core.Timeline;
+
+  mm.add("(min-width: 1024px)", () => {
+    // We use one master timeline with scrub for the pinning behavior
+    tl = gsap.timeline({
     scrollTrigger: {
       trigger: pinnedContainerRef.current,
       start: "top 15%",
@@ -142,12 +146,12 @@ export const createEngineeringJourneyTimeline = (
       midTime
     );
   }
+  });
 
   return {
-    timeline: tl,
+    timeline: tl!,
     cleanup: () => {
-      tl.kill();
-      ScrollTrigger.getById(pinnedContainerRef.current?.id || "")?.kill();
+      mm.revert();
     }
   };
 };

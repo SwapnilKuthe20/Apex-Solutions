@@ -44,7 +44,6 @@ export function FooterBottom() {
         {/* Back to Top */}
         <button
           onClick={handleScrollToTop}
-          aria-label="Back to top"
           className="flex items-center gap-2 text-[13px] font-semibold text-apex-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apex-gold-500 rounded-sm"
         >
           <span>Top</span>

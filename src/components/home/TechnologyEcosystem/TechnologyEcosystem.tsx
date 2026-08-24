@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -10,6 +10,7 @@ import { TechnologyPrinciples } from "./TechnologyPrinciples";
 import { technologyEcosystemConfig } from "@/data/technologies";
 import { createTechnologyEntranceTimeline } from "@/animations/technology";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function TechnologyEcosystem() {
@@ -25,7 +26,7 @@ export function TechnologyEcosystem() {
   const prefersReducedMotion = useReducedMotion();
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const { cleanup } = createTechnologyEntranceTimeline(
         sectionRef,
@@ -41,7 +42,7 @@ export function TechnologyEcosystem() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   // Divide categories into left and right for desktop layout around the center SVG
   const leftCategories = technologyEcosystemConfig.categories.slice(0, 3);

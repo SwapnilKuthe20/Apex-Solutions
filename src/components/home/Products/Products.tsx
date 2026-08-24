@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -9,6 +9,7 @@ import { ProductSlider } from "./ProductSlider";
 import { productsConfig } from "@/data/products";
 import { createProductsIntroTimeline, createProductSliderTimeline } from "@/animations/products";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Products() {
@@ -19,7 +20,7 @@ export function Products() {
   const copyRef = useRef<HTMLParagraphElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       // 1. Intro Animation Sequence
       const intro = createProductsIntroTimeline(
@@ -45,7 +46,7 @@ export function Products() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="surface" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>

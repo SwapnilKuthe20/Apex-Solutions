@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -10,6 +10,7 @@ import { ProcessProgress } from "./ProcessProgress";
 import { ProcessConnector } from "./ProcessConnector";
 import { createProcessIntroTimeline, createProcessMasterTimeline, createProcessMobileReveal } from "@/animations/process";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Process() {
@@ -42,7 +43,7 @@ export function Process() {
     setActiveIndex(index);
   }, []);
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       // 1. Intro Reveal
       createProcessIntroTimeline(sectionRef, eyebrowRef, headlineRef, copyRef, prefersReducedMotion);

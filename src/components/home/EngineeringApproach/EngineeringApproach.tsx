@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -8,6 +8,7 @@ import { EngineeringJourney } from "./EngineeringJourney";
 import { processConfig } from "@/data/engineeringApproach";
 import { createEngineeringIntroTimeline } from "@/animations/engineeringApproach";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function EngineeringApproach() {
@@ -17,7 +18,7 @@ export function EngineeringApproach() {
   const copyRef = useRef<HTMLParagraphElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const { cleanup } = createEngineeringIntroTimeline(
         sectionRef,
@@ -30,7 +31,7 @@ export function EngineeringApproach() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="surface" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>

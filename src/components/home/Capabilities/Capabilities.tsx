@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -9,6 +9,7 @@ import { CapabilityGrid } from "./CapabilityGrid";
 import { capabilitiesConfig } from "@/data/capabilities";
 import { createCapabilitiesEntranceTimeline } from "@/animations/capabilities";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 
 export function Capabilities() {
@@ -19,7 +20,7 @@ export function Capabilities() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const { cleanup } = createCapabilitiesEntranceTimeline(
         sectionRef,
@@ -33,7 +34,7 @@ export function Capabilities() {
     }, sectionRef);
     
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  });
 
   return (
     <Section variant="white" className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>

@@ -8,6 +8,7 @@ import { StackArchitecture } from "./StackArchitecture";
 import { techStackConfig } from "@/data/techStack";
 import { createTechStackIntroTimeline, createTechStackScrollSync, animateCategoryTransition } from "@/animations/technologyStack";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLazyGSAP } from "@/hooks/useLazyGSAP";
 import { gsap } from "@/animations/gsap";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
@@ -28,7 +29,7 @@ export function TechnologyStack() {
 
   const activeCategory = techStackConfig.categories[activeIndex];
 
-  useEffect(() => {
+  useLazyGSAP(sectionRef, () => {
     const ctx = gsap.context(() => {
       const intro = createTechStackIntroTimeline(
         sectionRef,
@@ -55,8 +56,7 @@ export function TechnologyStack() {
     }, sectionRef);
     
     return () => ctx.revert();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prefersReducedMotion]); // Active index is explicitly NOT in dependency array so we don't kill ScrollTrigger on state change
+  }, [prefersReducedMotion]);
 
   // Separate effect to animate layer transitions when activeIndex changes
   useEffect(() => {

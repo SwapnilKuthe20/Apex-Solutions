@@ -51,20 +51,20 @@ export const MetricItem = forwardRef<HTMLDivElement, MetricItemProps>(
         
         {/* Metric Label and Description */}
         <div className="mt-4 md:mt-6">
-          <dt className={cn(
+          <div className={cn(
             "font-semibold text-apex-navy-800 tracking-tight transition-colors duration-300 group-hover:text-apex-gold-600",
             isFeatured ? "text-xl md:text-2xl" : "text-lg md:text-xl"
           )}>
             {metric.label}
-          </dt>
+          </div>
           
           {metric.description && (
-            <dd className={cn(
+            <p className={cn(
               "text-apex-slate-500 mt-2 leading-relaxed transition-colors duration-300 group-hover:text-apex-navy-700",
               isFeatured ? "text-base md:text-lg max-w-sm" : "text-sm md:text-base max-w-xs"
             )}>
               {metric.description}
-            </dd>
+            </p>
           )}
         </div>
       </div>

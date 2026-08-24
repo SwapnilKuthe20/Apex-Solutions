@@ -22,7 +22,7 @@ export function useMouseParallax<T extends HTMLElement | SVGElement>(options: Us
 
   useEffect(() => {
     const element = elementRef.current;
-    if (!element || disabled || prefersReducedMotion || isTouch) return;
+    if (!element || disabled || prefersReducedMotion || isTouch || window.innerWidth < 1024) return;
 
     // Use gsap quickTo for maximum performance
     const xTo = gsap.quickTo(element, "x", { duration: 0.8, ease: "power3.out" });
