@@ -10,14 +10,14 @@ export function FinalCTA() {
   return (
     <Section 
       variant="navy-deep" 
-      className="relative py-16 md:py-20 overflow-hidden bg-apex-navy-900" 
+      className="relative overflow-hidden bg-apex-navy-900" 
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#DCE3EC 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-apex-navy-800 to-transparent opacity-50" />
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* Left: Text Content & CTA */}
           <div className="flex flex-col">
@@ -25,7 +25,7 @@ export function FinalCTA() {
             <h2 className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] font-semibold text-white tracking-tight mb-8">
               {finalCtaConfig.headline}
             </h2>
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] text-apex-slate-300 leading-relaxed max-w-xl mb-12">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] text-apex-slate-300 leading-relaxed max-w-xl mb-10">
               {finalCtaConfig.description}
             </p>
             

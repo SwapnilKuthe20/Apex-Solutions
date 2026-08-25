@@ -16,12 +16,12 @@ import { Container } from "@/components/ui/Container";
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
-  
+
   const headerRef = useRef<HTMLElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  
+
   const prefersReducedMotion = useReducedMotion();
 
   // Initial Entry Animation
@@ -30,7 +30,7 @@ export function Header() {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.1 });
-      
+
       tl.from([logoRef.current, innerRef.current?.querySelector('nav'), ctaRef.current], {
         y: 15,
         opacity: 0,
@@ -57,7 +57,7 @@ export function Header() {
         },
         onToggle: (self) => {
           setIsCompact(self.isActive);
-          
+
           gsap.to(innerRef.current, {
             paddingTop: self.isActive ? "16px" : "28px",
             paddingBottom: self.isActive ? "16px" : "28px",
@@ -82,10 +82,10 @@ export function Header() {
       >
         {/* Main Navigation */}
         <Container>
-          <div ref={innerRef} className="flex items-center justify-between pt-7 pb-7">
+          <div ref={innerRef} className="flex items-center justify-between pt-4 pb-4">
             {/* Logo */}
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               ref={logoRef}
               className={cn(
                 "flex items-center transition-transform duration-300 origin-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apex-gold-500 rounded-sm",
@@ -93,11 +93,11 @@ export function Header() {
               )}
               aria-label="Apex Solutions Home"
             >
-              <Image 
-                src="/Images/logo-Apex.png" 
-                alt="Apex Solutions Logo" 
-                width={240} 
-                height={56} 
+              <Image
+                src="/Images/logo-Apex.png"
+                alt="Apex Solutions Logo"
+                width={240}
+                height={56}
                 priority
                 className="w-auto h-9 lg:h-11 object-contain"
               />
@@ -109,8 +109,8 @@ export function Header() {
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-4" ref={ctaRef}>
               <div className="hidden lg:block">
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="group inline-flex items-center justify-center bg-apex-navy-900 hover:bg-apex-navy-800 text-white text-[15px] font-semibold px-6 py-2.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-apex-gold-500"
                 >
                   Contact Us

@@ -11,7 +11,7 @@ export function Trust() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <Section variant="white" className="relative pt-12 md:pt-16 pb-6 md:pb-8 overflow-hidden" ref={sectionRef}>
+    <Section variant="white" className="relative pt-6 md:pt-6 pb-6 md:pb-8 overflow-hidden" ref={sectionRef}>
       {/* Decorative Dot Grid - Top Left */}
       <div 
         className="absolute top-4 left-4 lg:left-12 w-32 lg:w-44 h-32 lg:h-44 bg-[radial-gradient(circle_at_center,var(--apex-slate-300)_1.5px,transparent_1.5px)] opacity-50 pointer-events-none -z-10"
@@ -26,7 +26,7 @@ export function Trust() {
 
       <Container>
         {/* Header content */}
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-12">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-10">
           <Eyebrow className="justify-center mb-3.5">{trustConfig.eyebrow}</Eyebrow>
           
           <h2 className="text-[32px] md:text-[42px] lg:text-[48px] leading-tight font-bold text-apex-navy-900 tracking-tight mb-4">

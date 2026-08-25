@@ -70,11 +70,11 @@ export function Process() {
   }, [prefersReducedMotion, isDesktop, handleStepChange]);
 
   return (
-    <Section variant="surface" className="py-16 md:py-24 overflow-hidden" ref={sectionRef}>
+    <Section variant="surface" className="overflow-hidden" ref={sectionRef}>
       <Container>
         
         {/* Intro Header */}
-        <div className="max-w-3xl mb-12 md:mb-16">
+        <div className="max-w-3xl mb-8 md:mb-10">
           <div ref={eyebrowRef} className="will-change-transform mb-6">
             <Eyebrow>{processConfig.eyebrow}</Eyebrow>
           </div>
@@ -97,7 +97,7 @@ export function Process() {
           ref={pinnedContainerRef}
           className="relative lg:h-screen lg:flex lg:flex-col lg:justify-center"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative">
             
             {/* The Animated Line */}
             <ProcessConnector ref={pathRef} />

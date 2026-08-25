@@ -14,7 +14,7 @@ export function TestimonialControls({ currentIndex, totalSlides }: TestimonialCo
   const totalFormatted = String(totalSlides).padStart(2, '0');
 
   return (
-    <div className="flex items-center gap-8 mt-12 lg:mt-0 lg:absolute lg:right-0 lg:bottom-0 lg:z-20">
+    <div className="flex items-center gap-8 mt-10 lg:mt-0 lg:absolute lg:right-0 lg:bottom-0 lg:z-20">
       
       {/* Navigation Buttons */}
       <div className="flex items-center gap-2">

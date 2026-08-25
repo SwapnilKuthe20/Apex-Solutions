@@ -1,46 +1,80 @@
 import { IndustryData } from "@/data/industries";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap, Landmark, Settings, HeartPulse, Building2, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface IndustryCardProps {
   industry: IndustryData;
 }
 
-export function IndustryCard({ industry }: IndustryCardProps) {
-  // Use a placeholder image mapped by visualType
-  const placeholderImages = {
-    manufacturing: "bg-slate-300",
-    healthcare: "bg-slate-400",
-    logistics: "bg-slate-500",
-    finance: "bg-slate-600",
-    retail: "bg-slate-700",
-    energy: "bg-slate-800",
-  };
-  
-  const bgClass = placeholderImages[industry.visualType as keyof typeof placeholderImages] || "bg-slate-900";
+const getIcon = (iconName?: string) => {
+  switch (iconName) {
+    case "GraduationCap": return <GraduationCap className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    case "Landmark": return <Landmark className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    case "Settings": return <Settings className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    case "HeartPulse": return <HeartPulse className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    case "Building2": return <Building2 className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    case "ShoppingCart": return <ShoppingCart className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+    default: return <Settings className="w-6 h-6 text-apex-gold-500" strokeWidth={1.5} />;
+  }
+};
 
+export function IndustryCard({ industry }: IndustryCardProps) {
   return (
     <Link 
-      href="/industries"
-      className={cn(
-        "group relative flex flex-col justify-end overflow-hidden rounded-[20px] h-[300px] md:h-[400px] w-full transition-all duration-300",
-        bgClass
-      )}
+      href={`/industries/${industry.id}`}
+      className="group relative flex flex-col bg-white overflow-hidden rounded-[16px] w-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-15px_rgba(11,31,65,0.15)] border border-slate-100 flex-1 min-w-0"
     >
-      {/* Dark gradient overlay matching reference */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+      {/* Image Area */}
+      <div className="relative h-[140px] md:h-[160px] w-full overflow-hidden">
+        {industry.image && (
+          <Image
+            src={industry.image}
+            alt={industry.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
+      </div>
 
-      {/* Content at bottom */}
-      <div className="relative z-20 p-6 md:p-8 flex justify-between items-end w-full">
-        <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight leading-tight group-hover:-translate-y-1 transition-transform duration-300">
+      {/* Floating Circular Icon */}
+      <div className="absolute top-[140px] md:top-[160px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+        <div className="w-14 h-14 bg-apex-navy-800 rounded-full flex items-center justify-center border-[4px] border-white shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+          {getIcon(industry.iconName)}
+        </div>
+      </div>
+
+      {/* Content Area */}
+      <div className="flex flex-col flex-grow pt-10 pb-6 px-4 md:px-5">
+        <h3 className="text-[17px] md:text-[19px] font-semibold text-apex-navy-800 text-center mb-3">
           {industry.title}
         </h3>
         
-        <div className="w-10 h-10 rounded-full bg-apex-gold-500 flex items-center justify-center transform translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-          <ArrowRight className="w-5 h-5 text-white" />
+        {/* Gold Short Underline */}
+        <div className="w-8 h-[2px] bg-apex-gold-500 mx-auto mb-4" />
+        
+        <p className="text-[13px] md:text-[14px] text-slate-500 text-center leading-relaxed flex-grow">
+          {descriptionTruncated(industry.description)}
+        </p>
+        
+        {/* Bottom Divider */}
+        <div className="w-full h-px bg-slate-100 mt-6 mb-5" />
+        
+        {/* CTA */}
+        <div className="flex items-center justify-between mt-auto group-hover:text-apex-navy-800 transition-colors">
+          <span className="text-[13px] md:text-[14px] font-semibold text-apex-navy-800">
+            Explore Solutions
+          </span>
+          <ArrowRight className="w-4 h-4 text-apex-gold-500 transform transition-transform duration-300 group-hover:translate-x-1" />
         </div>
       </div>
     </Link>
   );
 }
+
+// Optional helper to keep descriptions consistent height if needed, 
+// though flex-grow on the p tag handles vertical alignment.
+function descriptionTruncated(desc: string) {
+  return desc;
+}
+

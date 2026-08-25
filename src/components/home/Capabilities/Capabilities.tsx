@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export function Capabilities() {
   return (
-    <Section variant="surface" className="relative py-16 md:py-24 bg-[#FAFBFD] overflow-hidden">
+    <Section variant="surface" className="relative bg-[#FAFBFD] overflow-hidden">
       {/* Corner Decorative Dot Matrices */}
       <div 
         className="absolute top-8 left-6 lg:left-12 w-36 h-36 bg-[radial-gradient(circle_at_center,var(--apex-slate-300)_1.5px,transparent_1.5px)] opacity-40 pointer-events-none -z-10"
@@ -31,7 +31,7 @@ export function Capabilities() {
 
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-12">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mb-10">
           <Eyebrow className="justify-center mb-4">{capabilitiesConfig.eyebrow}</Eyebrow>
           
           <h2 className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] leading-tight font-bold text-apex-navy-900 tracking-tight mb-4">
@@ -54,7 +54,7 @@ export function Capabilities() {
         </div>
 
         {/* Bottom CTA Block */}
-        <div className="mt-12 md:mt-16 max-w-3xl mx-auto bg-white rounded-2xl border border-slate-100/90 shadow-[0_4px_25px_-4px_rgba(8,30,66,0.06)] p-4 md:px-6 md:py-4 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
+        <div className="mt-10 md:mt-12 max-w-3xl mx-auto bg-white rounded-2xl border border-slate-100/90 shadow-[0_4px_25px_-4px_rgba(8,30,66,0.06)] p-4 md:px-6 md:py-4 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-amber-50/70 border border-apex-gold-500/30 flex items-center justify-center text-apex-gold-500 shrink-0">
               <Rocket className="w-6 h-6" />

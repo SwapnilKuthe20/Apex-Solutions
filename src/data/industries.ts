@@ -5,61 +5,76 @@ export interface IndustryData {
   description: string;
   features: string[];
   visualType: string;
+  image?: string;
+  iconName?: string;
 }
 
 export const industriesConfig = {
-  eyebrow: "OUR EXPERTISE",
-  headline: "Industries We Serve",
+  eyebrow: "SOLUTIONS BY INDUSTRY",
+  headline: "Industry-Focused Solutions.",
+  headlineLine2: "Measurable Impact.",
   description:
-    "We apply technology, automation and engineering discipline to solve industry-specific challenges and create measurable business value.",
+    "We understand every industry is unique. Our solutions are tailored to solve real challenges and unlock new growth opportunities.",
   industries: [
     {
-      id: "manufacturing",
+      id: "education",
       number: "01",
-      title: "Manufacturing",
-      description: "Industrial systems, automation and connected operations. We build software that integrates with hardware to optimize production lines.",
+      title: "Education",
+      description: "Smart learning platforms, school management systems and digital education solutions.",
       features: [],
-      visualType: "manufacturing"
-    },
-    {
-      id: "healthcare",
-      number: "02",
-      title: "Healthcare",
-      description: "Digital experiences and data-driven workflows. Secure, compliant platforms that improve patient outcomes and clinical operations.",
-      features: [],
-      visualType: "healthcare"
-    },
-    {
-      id: "logistics",
-      number: "03",
-      title: "Logistics & Supply Chain",
-      description: "Real-time tracking, route optimization and automated inventory management. Resilient systems that adapt to global supply disruptions.",
-      features: [],
-      visualType: "logistics"
+      visualType: "education",
+      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800",
+      iconName: "GraduationCap"
     },
     {
       id: "finance",
-      number: "04",
-      title: "Financial Services",
-      description: "Secure transaction processing, algorithmic analysis and modern banking portals. We build systems that handle high-volume data.",
+      number: "02",
+      title: "Finance",
+      description: "Secure, compliant and scalable financial software for modern banking and fintech.",
       features: [],
-      visualType: "finance"
+      visualType: "finance",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      iconName: "Landmark"
+    },
+    {
+      id: "manufacturing",
+      number: "03",
+      title: "Manufacturing",
+      description: "Intelligent systems to optimize operations, supply chains and production efficiency.",
+      features: [],
+      visualType: "manufacturing",
+      image: "https://images.unsplash.com/photo-1565439390145-c4056eb3b603?auto=format&fit=crop&q=80&w=800",
+      iconName: "Settings"
+    },
+    {
+      id: "healthcare",
+      number: "04",
+      title: "Healthcare",
+      description: "Digital solutions that improve patient care, streamline workflows and ensure data security.",
+      features: [],
+      visualType: "healthcare",
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800",
+      iconName: "HeartPulse"
+    },
+    {
+      id: "government",
+      number: "05",
+      title: "Government",
+      description: "Citizen-centric platforms for governance, public services and digital transformation.",
+      features: [],
+      visualType: "government",
+      image: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?auto=format&fit=crop&q=80&w=800",
+      iconName: "Building2"
     },
     {
       id: "retail",
-      number: "05",
-      title: "Retail & E-Commerce",
-      description: "Omnichannel platforms, personalized experiences, and intelligent supply chain integrations that drive customer loyalty and revenue.",
-      features: [],
-      visualType: "retail"
-    },
-    {
-      id: "energy",
       number: "06",
-      title: "Energy & Utilities",
-      description: "Smart grid management, predictive maintenance systems, and sustainability tracking platforms for modern energy providers.",
+      title: "Retail & Commerce",
+      description: "Omnichannel commerce solutions that enhance customer experience and drive growth.",
       features: [],
-      visualType: "energy"
+      visualType: "retail",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
+      iconName: "ShoppingCart"
     }
   ] as IndustryData[],
 };

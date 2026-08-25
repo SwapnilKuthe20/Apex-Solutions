@@ -20,7 +20,7 @@ export const WhyApexStatement = forwardRef<HTMLDivElement, WhyApexStatementProps
         
         <h2 
           ref={statementRef}
-          className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] font-semibold text-apex-navy-900 tracking-tight will-change-transform mb-12 max-w-[800px]"
+          className="text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] font-semibold text-apex-navy-900 tracking-tight will-change-transform mb-10 max-w-[800px]"
         >
           {statement}
         </h2>

@@ -18,7 +18,7 @@ export const InsightList = forwardRef<HTMLDivElement, InsightListProps>(
     }
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12">
         
         {/* Featured Left Side */}
         {featuredInsight && (
@@ -32,7 +32,7 @@ export const InsightList = forwardRef<HTMLDivElement, InsightListProps>(
 
         {/* Standard Stacked Right Side */}
         {standardInsights.length > 0 && (
-          <div className="col-span-1 lg:col-span-5 flex flex-col gap-12 md:gap-16 lg:gap-12">
+          <div className="col-span-1 lg:col-span-5 flex flex-col gap-12 md:gap-12 lg:gap-12">
             {standardInsights.map(insight => (
               <InsightCard key={insight.id} insight={insight} />
             ))}

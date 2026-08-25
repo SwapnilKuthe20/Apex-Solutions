@@ -11,7 +11,7 @@ export function HeroEngineeringVisual() {
 
   return (
     <div 
-      className="relative w-full h-full flex items-center justify-center lg:justify-end min-h-[400px] lg:min-h-[600px] opacity-100 mt-10 lg:mt-12 xl:mt-16" 
+      className="relative w-full h-full flex items-center justify-center lg:justify-end min-h-[400px] lg:min-h-[600px] opacity-100 mt-10 lg:mt-10 xl:mt-12" 
       id="hero-visual-container"
     >
       {/* 

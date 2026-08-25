@@ -1,46 +1,122 @@
-export interface WhyApexPrinciple {
-  id: string;
-  number: string;
-  title: string;
-  description: string;
-}
+import { 
+  Code2, 
+  Briefcase, 
+  ShieldCheck, 
+  Scaling, 
+  Target, 
+  Handshake, 
+  Lightbulb 
+} from "lucide-react";
 
 export const whyApexConfig = {
   eyebrow: "WHY APEX",
-  headline: "Engineering With a Business Mindset.",
-  statement: "We engineer digital systems around the people, processes and business outcomes they are meant to serve.",
-  description:
-    "We don't build technology for technology's sake. Apex combines business context, engineering discipline and delivery experience to build systems designed for real business environments.",
-  principles: [
+  headline: {
+    part1: "Engineering Excellence.",
+    part2: "Business ",
+    highlight: "Impact."
+  },
+  description: "We combine deep technical expertise with business understanding to build solutions that drive growth, efficiency, and long-term success.",
+  
+  features: [
     {
       id: "engineering-first",
-      number: "01",
-      title: "ENGINEERING-FIRST",
-      description: "We approach complex problems through structured engineering, prioritizing system integrity and technical depth over superficial features.",
+      title: "Engineering First",
+      description: "Clean code, scalable architecture and modern engineering practices.",
+      icon: Code2
     },
     {
-      id: "business-aligned",
-      number: "02",
-      title: "BUSINESS-ALIGNED",
-      description: "Technology is designed around actual business requirements, ensuring that every deployment maps directly to measurable outcomes.",
+      id: "business-focused",
+      title: "Business Focused",
+      description: "We solve real business problems with solutions that deliver measurable results.",
+      icon: Briefcase
     },
     {
-      id: "scalable",
-      number: "03",
-      title: "BUILT TO EVOLVE",
-      description: "Systems are architected with future change in mind. We build platforms capable of scaling naturally as your operational demands grow.",
+      id: "secure-reliable",
+      title: "Secure & Reliable",
+      description: "Security by design, robust testing and continuous monitoring for peace of mind.",
+      icon: ShieldCheck
     },
     {
-      id: "collaborative",
-      number: "04",
-      title: "COLLABORATIVE DELIVERY",
-      description: "We operate as an extension of your technical team, embedding our engineering practices directly into your workflows.",
+      id: "scalable-future-ready",
+      title: "Scalable & Future-Ready",
+      description: "Built to scale, adapt and evolve with your business and technology.",
+      icon: Scaling
+    }
+  ],
+
+  mission: {
+    text: "Our mission is simple:\nBuild technology that\nempowers businesses\nand improves lives.",
+    philosophy: [
+      {
+        id: "purpose-driven",
+        title: "Purpose Driven",
+        description: "We build with purpose and long-term vision.",
+        icon: Target
+      },
+      {
+        id: "partnership-mindset",
+        title: "Partnership Mindset",
+        description: "We succeed when our clients succeed.",
+        icon: Handshake
+      },
+      {
+        id: "innovation-always",
+        title: "Innovation Always",
+        description: "We embrace new ideas and emerging tech.",
+        icon: Lightbulb
+      }
+    ]
+  },
+
+  impact: {
+    eyebrow: "OUR IMPACT",
+    headline: {
+      part1: "Delivering Results. Driving ",
+      highlight: "Impact."
     },
-    {
-      id: "long-term",
-      number: "05",
-      title: "LONG-TERM THINKING",
-      description: "We measure success by the long-term viability and performance of the systems we build, prioritizing maintainability and low technical debt.",
-    },
-  ] as WhyApexPrinciple[],
+    metrics: [
+      {
+        id: "projects",
+        value: "250+",
+        title: "Projects Delivered",
+        description: "Successful solutions across industries and domains.",
+        iconType: "rocket"
+      },
+      {
+        id: "clients",
+        value: "120+",
+        title: "Happy Clients",
+        description: "Businesses that trust us as their technology partner.",
+        iconType: "users"
+      },
+      {
+        id: "countries",
+        value: "12+",
+        title: "Countries Served",
+        description: "Global delivery with local understanding.",
+        iconType: "globe"
+      },
+      {
+        id: "hours",
+        value: "1M+",
+        title: "Hours of Engineering",
+        description: "Building robust, scalable and secure solutions.",
+        iconType: "code"
+      },
+      {
+        id: "satisfaction",
+        value: "99.6%",
+        title: "Customer Satisfaction",
+        description: "Long-term relationships built on trust and results.",
+        iconType: "trophy"
+      },
+      {
+        id: "years",
+        value: "5+",
+        title: "Years of Excellence",
+        description: "A journey of growth, learning and innovation.",
+        iconType: "chart"
+      }
+    ]
+  }
 };

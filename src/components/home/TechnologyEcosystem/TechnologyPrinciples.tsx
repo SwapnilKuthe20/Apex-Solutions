@@ -7,7 +7,7 @@ interface TechnologyPrinciplesProps {
 
 export function TechnologyPrinciples({ principlesRef }: TechnologyPrinciplesProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-16 pb-8">
+    <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-12 pb-8">
       {technologyEcosystemConfig.principles.map((principle, index) => (
         <div 
           key={index} 

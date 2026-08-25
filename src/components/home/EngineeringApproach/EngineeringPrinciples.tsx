@@ -21,7 +21,7 @@ export function EngineeringPrinciples() {
   const { title, description, principles } = engineeringApproachConfig.principlesPanel;
 
   return (
-    <div className="bg-[#f8fafd] border border-slate-100/90 rounded-[24px] md:rounded-[32px] p-6 md:px-8 md:py-7 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 max-w-6xl mx-auto shadow-[0_4px_25px_-4px_rgba(8,30,66,0.04)] mt-16 md:mt-20">
+    <div className="bg-[#f8fafd] border border-slate-100/90 rounded-[24px] md:rounded-[32px] p-6 md:px-8 md:py-7 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 max-w-6xl mx-auto shadow-[0_4px_25px_-4px_rgba(8,30,66,0.04)] mt-12 md:mt-20">
       
       {/* Left Block: Isometric Cube Icon + Title & Description */}
       <div className="flex items-center gap-4 lg:w-[28%] shrink-0">

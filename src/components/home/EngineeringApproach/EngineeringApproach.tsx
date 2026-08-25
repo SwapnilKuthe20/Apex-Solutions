@@ -30,7 +30,7 @@ export function EngineeringApproach() {
   }, []);
 
   return (
-    <Section variant="white" className="relative py-16 md:py-24 overflow-hidden bg-white" ref={sectionRef}>
+    <Section variant="white" className="relative overflow-hidden bg-white" ref={sectionRef}>
       
       {/* Background Decoration: Upper-Left Dotted Matrix */}
       <div 
@@ -60,7 +60,7 @@ export function EngineeringApproach() {
 
       <Container>
         {/* Section Header with Staggered Entrance */}
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-12 md:mb-16">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-8 md:mb-10">
           <div className={`transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}>

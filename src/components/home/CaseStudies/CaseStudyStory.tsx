@@ -49,7 +49,7 @@ export function CaseStudyStory({ caseStudy, index }: CaseStudyStoryProps) {
   return (
     <article 
       ref={containerRef} 
-      className="group py-16 md:py-24 lg:py-32 first:pt-0 border-b border-apex-border/20 last:border-b-0"
+      className="group py-12 md:py-16 first:pt-0 border-b border-apex-border/20 last:border-b-0"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         

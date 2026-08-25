@@ -1,44 +1,105 @@
 export interface ProductData {
   id: string;
   title: string;
-  description: string;
+  titlePrefix?: string;
+  titleSuffix?: string;
+  subtitle: string;
+  features: string[];
   iconBg: string;
   iconColor: string;
+  iconName: string;
+  accentColor: string;
 }
 
 export const productsConfig = {
-  eyebrow: "CORE PLATFORMS",
-  headline: "Our Core Platforms",
+  eyebrow: "OUR PRODUCTS & PLATFORMS",
+  headline: "Own Platforms. Proven Impact.",
+  headlineLine2: "Built by Apex. For Your Growth.",
   description:
-    "We provide enterprise-grade platforms to accelerate development and streamline operations.",
+    "We build and innovate our own platforms to solve real-world challenges across education, engagement, business operations and automation.",
   products: [
     {
-      id: "web",
-      title: "Web Platform",
-      description: "Modern, responsive, and secure web applications built for scale and performance.",
-      iconBg: "bg-blue-100",
+      id: "eteach",
+      title: "eTeach",
+      subtitle: "Smart School Management\n& Learning Platform",
+      features: [
+        "School ERP & LMS",
+        "Online Classes & Assessments",
+        "Fee, Attendance & Reports",
+        "Mobile App for Teachers & Parents"
+      ],
+      iconBg: "bg-blue-50",
       iconColor: "text-blue-600",
+      iconName: "GraduationCap",
+      accentColor: "bg-blue-600",
     },
     {
-      id: "mobile",
-      title: "Mobile Platform",
-      description: "Native and cross-platform mobile solutions delivering seamless user experiences.",
-      iconBg: "bg-purple-100",
-      iconColor: "text-purple-600",
-    },
-    {
-      id: "data",
-      title: "Data Platform",
-      description: "Robust data pipelines, warehousing, and analytics for actionable business insights.",
-      iconBg: "bg-green-100",
+      id: "engageguru",
+      title: "EngageGuru",
+      titlePrefix: "Engage",
+      titleSuffix: "Guru",
+      subtitle: "AI-Powered Customer\nEngagement Platform",
+      features: [
+        "WhatsApp CRM & Automation",
+        "Leads & Sales Management",
+        "Email, SMS & RCS Marketing",
+        "AI Chatbot & Workflow Builder"
+      ],
+      iconBg: "bg-green-50",
       iconColor: "text-green-600",
+      iconName: "MessageCircle",
+      accentColor: "bg-green-600",
     },
     {
-      id: "cloud",
-      title: "Cloud Platform",
-      description: "Scalable cloud infrastructure and DevOps automation for reliable deployment.",
-      iconBg: "bg-orange-100",
+      id: "activedesk",
+      title: "ActiveDesk",
+      titlePrefix: "Active",
+      titleSuffix: "Desk",
+      subtitle: "IT Management & Workflow\nAutomation Suite",
+      features: [
+        "Helpdesk & Ticketing",
+        "Asset & Inventory Management",
+        "Remote Monitoring",
+        "Reports & Analytics"
+      ],
+      iconBg: "bg-orange-50",
       iconColor: "text-orange-600",
+      iconName: "MonitorCheck",
+      accentColor: "bg-orange-600",
+    },
+    {
+      id: "printkaatm",
+      title: "Print Ka ATM",
+      titlePrefix: "Print Ka ",
+      titleSuffix: "ATM",
+      subtitle: "Smart Printing Kiosk\nManagement System",
+      features: [
+        "QR-Based Print Services",
+        "Self-Service Printing",
+        "Usage Tracking & Reports",
+        "Secure & Cashless Payments"
+      ],
+      iconBg: "bg-purple-50",
+      iconColor: "text-purple-600",
+      iconName: "Printer",
+      accentColor: "bg-purple-600",
+    },
+    {
+      id: "skillzgro",
+      title: "SkillzGro",
+      titlePrefix: "Skillz",
+      titleSuffix: "Gro",
+      subtitle: "Skill Development &\nLearning Platform",
+      features: [
+        "Industry-Oriented Courses",
+        "Live Projects & Internships",
+        "Certifications",
+        "Placement Assistance"
+      ],
+      iconBg: "bg-sky-50",
+      iconColor: "text-sky-600",
+      iconName: "TrendingUp",
+      accentColor: "bg-sky-600",
     }
   ] as ProductData[],
 };
